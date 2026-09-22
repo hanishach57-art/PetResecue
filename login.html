@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+```
+<title>Login | PawRescue</title>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+    }
+
+    body {
+        min-height: 100vh;
+        background: linear-gradient(135deg, #fff7ed, #ffedd5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+    }
+
+    .login-box {
+        width: 100%;
+        max-width: 420px;
+        background: #ffffff;
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+    }
+
+    .logo {
+        text-align: center;
+        font-size: 32px;
+        font-weight: bold;
+        color: #f97316;
+        margin-bottom: 8px;
+    }
+
+    .tagline {
+        text-align: center;
+        color: #777;
+        margin-bottom: 30px;
+    }
+
+    .input-group {
+        margin-bottom: 20px;
+    }
+
+    .input-group label {
+        display: block;
+        margin-bottom: 8px;
+        color: #333;
+        font-weight: 600;
+    }
+
+    .input-group input {
+        width: 100%;
+        padding: 14px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        font-size: 15px;
+        transition: 0.3s;
+    }
+
+    .input-group input:focus {
+        outline: none;
+        border-color: #f97316;
+        box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.12);
+    }
+
+    .password-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .password-row a {
+        color: #f97316;
+        font-size: 13px;
+        text-decoration: none;
+    }
+
+    .login-btn {
+        width: 100%;
+        padding: 14px;
+        border: none;
+        border-radius: 10px;
+        background: #f97316;
+        color: white;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .login-btn:hover {
+        background: #ea580c;
+        transform: translateY(-1px);
+    }
+
+    .divider {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 25px 0;
+        color: #999;
+        font-size: 13px;
+    }
+
+    .divider::before,
+    .divider::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: #ddd;
+    }
+
+    .register-text {
+        text-align: center;
+        color: #666;
+        font-size: 14px;
+    }
+
+    .register-text a {
+        color: #f97316;
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+    .home-link {
+        display: block;
+        text-align: center;
+        margin-top: 20px;
+        color: #555;
+        text-decoration: none;
+        font-size: 14px;
+    }
+
+    .message {
+        display: none;
+        padding: 12px;
+        margin-bottom: 20px;
+        border-radius: 8px;
+        text-align: center;
+        font-size: 14px;
+    }
+
+    .error {
+        display: block;
+        background: #fee2e2;
+        color: #b91c1c;
+    }
+
+    .success {
+        display: block;
+        background: #dcfce7;
+        color: #15803d;
+    }
+
+    @media (max-width: 480px) {
+        .login-box {
+            padding: 30px 22px;
+        }
+
+        .logo {
+            font-size: 28px;
+        }
+    }
+</style>
+```
+
+</head>
+
+<body>
+
+```
+<div class="login-box">
+
+    <div class="logo">🐾 PawRescue</div>
+
+    <p class="tagline">
+        Welcome back! Help us give every pet a loving home.
+    </p>
+
+    <div id="message" class="message"></div>
+
+    <form id="loginForm">
+
+        <div class="input-group">
+            <label for="email">Email Address</label>
+
+            <input
+                type="email"
+                id="email"
+                placeholder="Enter your email"
+                required
+            >
+        </div>
+
+        <div class="input-group">
+
+            <div class="password-row">
+                <label for="password">Password</label>
+
+                <a href="forgot-password.html">
+                    Forgot Password?
+                </a>
+            </div>
+
+            <input
+                type="password"
+                id="password"
+                placeholder="Enter your password"
+                required
+                minlength="6"
+            >
+
+        </div>
+
+        <button type="submit" class="login-btn">
+            Login
+        </button>
+
+    </form>
+
+    <div class="divider">
+        OR
+    </div>
+
+    <p class="register-text">
+        Don't have an account?
+        <a href="register.html">Create Account</a>
+    </p>
+
+    <a href="index.html" class="home-link">
+        ← Back to Home
+    </a>
+
+</div>
+
+
+<script>
+
+    const loginForm = document.getElementById("loginForm");
+    const message = document.getElementById("message");
+
+    loginForm.addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+        const email =
+            document.getElementById("email").value.trim();
+
+        const password =
+            document.getElementById("password").value;
+
+        /*
+            Demo authentication.
+
+            Later this section can be replaced with:
+            - PHP
+            - Node.js / Express
+            - Firebase
+            - MySQL API
+        */
+
+        const savedUser =
+            JSON.parse(localStorage.getItem("pawUser"));
+
+        if (!savedUser) {
+
+            message.className = "message error";
+
+            message.textContent =
+                "No account found. Please register first.";
+
+            return;
+        }
+
+        if (
+            email === savedUser.email &&
+            password === savedUser.password
+        ) {
+
+            localStorage.setItem("isLoggedIn", "true");
+
+            message.className = "message success";
+
+            message.textContent =
+                "Login successful! Redirecting...";
+
+            setTimeout(function() {
+
+                window.location.href = "dashboard.html";
+
+            }, 1000);
+
+        } else {
+
+            message.className = "message error";
+
+            message.textContent =
+                "Invalid email or password.";
+
+        }
+
+    });
+
+</script>
+```
+
+</body>
+</html>

@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+```
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Adoption Application | PawRescue</title>
+
+<style>
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+    }
+
+    body {
+        background: #f7f8fa;
+        color: #333;
+    }
+
+    header {
+        background: white;
+        height: 70px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 6%;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    }
+
+    .logo {
+        color: #f97316;
+        font-size: 25px;
+        font-weight: bold;
+    }
+
+    header a {
+        text-decoration: none;
+        color: #444;
+        margin-left: 20px;
+    }
+
+    .container {
+        width: 90%;
+        max-width: 900px;
+        margin: 40px auto;
+    }
+
+    .title {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .title h1 {
+        margin-bottom: 10px;
+    }
+
+    .title p {
+        color: #777;
+    }
+
+    .form-box {
+        background: white;
+        padding: 35px;
+        border-radius: 15px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.07);
+    }
+
+    .section-title {
+        margin: 25px 0 18px;
+        color: #f97316;
+        border-bottom: 2px solid #f97316;
+        padding-bottom: 8px;
+    }
+
+    .section-title:first-child {
+        margin-top: 0;
+    }
+
+    .row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+
+    .form-group {
+        margin-bottom: 18px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 7px;
+        font-weight: bold;
+    }
+
+    input,
+    select,
+    textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 14px;
+    }
+
+    textarea {
+        min-height: 100px;
+        resize: vertical;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+        outline: none;
+        border-color: #f97316;
+    }
+
+    .radio-group {
+        display: flex;
+        gap: 25px;
+    }
+
+    .radio-group label {
+        font-weight: normal;
+    }
+
+    .radio-group input {
+        width: auto;
+        margin-right: 5px;
+    }
+
+    .terms {
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+        margin: 20px 0;
+        font-size: 14px;
+    }
+
+    .terms input {
+        width: auto;
+        margin-top: 3px;
+    }
+
+    .submit-btn {
+        width: 100%;
+        padding: 15px;
+        border: none;
+        border-radius: 8px;
+        background: #f97316;
+        color: white;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .submit-btn:hover {
+        background: #ea580c;
+    }
+
+    .success {
+        display: none;
+        padding: 20px;
+        background: #dcfce7;
+        color: #166534;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    @media(max-width: 650px) {
+
+        .row {
+            grid-template-columns: 1fr;
+            gap: 0;
+        }
+
+        .form-box {
+            padding: 25px 18px;
+        }
+
+        header {
+            padding: 0 20px;
+        }
+
+    }
+
+</style>
+```
+
+</head>
+
+<body>
+
+<header>
+
+```
+<div class="logo">
+    🐾 PawRescue
+</div>
+
+<div>
+
+    <a href="dashboard.html">
+        Dashboard
+    </a>
+
+    <a href="pet.html">
+        Pets
+    </a>
+
+</div>
+```
+
+</header>
+
+<div class="container">
+
+```
+<div class="title">
+
+    <h1>
+        🐾 Pet Adoption Application
+    </h1>
+
+    <p>
+        Tell us about yourself and your home.
+        This helps us find the right match.
+    </p>
+
+</div>
+
+
+<div id="successMessage" class="success">
+
+    <h2>
+        🎉 Application Submitted!
+    </h2>
+
+    <p>
+        Your adoption application has been received.
+        Our team will review it and contact you.
+    </p>
+
+    <br>
+
+    <a href="my-applications.html">
+        View My Application
+    </a>
+
+</div>
+
+
+<div class="form-box">
+
+    <form id="adoptionForm">
+
+
+        <!-- PERSONAL INFORMATION -->
+
+        <h2 class="section-title">
+            Personal Information
+        </h2>
+
+
+        <div class="row">
+
+            <div class="form-group">
+
+                <label>
+                    Full Name
+                </label>
+
+                <input
+                    type="text"
+                    id="fullName"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Phone Number
+                </label>
+
+                <input
+                    type="tel"
+                    id="phone"
+                    required
+                >
+
+            </div>
+
+        </div>
+
+
+        <div class="row">
+
+            <div class="form-group">
+
+                <label>
+                    Email
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    City
+                </label>
+
+                <input
+                    type="text"
+                    id="city"
+                    required
+                >
+
+            </div>
+
+        </div>
+
+
+        <!-- PET INFORMATION -->
+
+        <h2 class="section-title">
+            Pet Information
+        </h2>
+
+
+        <div class="row">
+
+            <div class="form-group">
+
+                <label>
+                    Pet Name
+                </label>
+
+                <input
+                    type="text"
+                    id="petName"
+                    placeholder="Example: Bruno"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Pet Type
+                </label>
+
+                <select id="petType" required>
+
+                    <option value="">
+                        Select
+                    </option>
+
+                    <option value="Dog">
+                        Dog
+                    </option>
+
+                    <option value="Cat">
+                        Cat
+                    </option>
+
+                    <option value="Other">
+                        Other
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <!-- HOME INFORMATION -->
+
+        <h2 class="section-title">
+            Home Information
+        </h2>
+
+
+        <div class="form-group">
+
+            <label>
+                Type of Home
+            </label>
+
+            <select id="homeType" required>
+
+                <option value="">
+                    Select
+                </option>
+
+                <option>
+                    Apartment
+                </option>
+
+                <option>
+                    Independent House
+                </option>
+
+                <option>
+                    Farm House
+                </option>
+
+                <option>
+                    Other
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Do you have a secure outdoor area?
+            </label>
+
+            <div class="radio-group">
+
+                <label>
+                    <input
+                        type="radio"
+                        name="yard"
+                        value="Yes"
+                        required
+                    >
+                    Yes
+                </label>
+
+                <label>
+                    <input
+                        type="radio"
+                        name="yard"
+                        value="No"
+                    >
+                    No
+                </label>
+
+            </div>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Do you currently have pets?
+            </label>
+
+            <div class="radio-group">
+
+                <label>
+                    <input
+                        type="radio"
+                        name="existingPets"
+                        value="Yes"
+                        required
+                    >
+                    Yes
+                </label>
+
+                <label>
+                    <input
+                        type="radio"
+                        name="existingPets"
+                        value="No"
+                    >
+                    No
+                </label>
+
+            </div>
+
+        </div>
+
+
+        <!-- EXPERIENCE -->
+
+        <h2 class="section-title">
+            Pet Experience
+        </h2>
+
+
+        <div class="form-group">
+
+            <label>
+                Have you owned a pet before?
+            </label>
+
+            <select id="experience" required>
+
+                <option value="">
+                    Select
+                </option>
+
+                <option>
+                    Yes, currently
+                </option>
+
+                <option>
+                    Yes, previously
+                </option>
+
+                <option>
+                    No, this is my first pet
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Why do you want to adopt?
+            </label>
+
+            <textarea
+                id="reason"
+                placeholder="Tell us why you want to adopt this pet..."
+                required>
+            </textarea>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                How will you care for the pet?
+            </label>
+
+            <textarea
+                id="carePlan"
+                placeholder="Tell us about food, exercise, veterinary care, etc."
+                required>
+            </textarea>
+
+        </div>
+
+
+        <!-- TERMS -->
+
+        <label class="terms">
+
+            <input
+                type="checkbox"
+                required
+            >
+
+            <span>
+                I confirm that the information provided
+                is correct and I agree to the adoption
+                process and home verification.
+            </span>
+
+        </label>
+
+
+        <button
+            type="submit"
+            class="submit-btn">
+
+            Submit Adoption Application
+
+        </button>
+
+    </form>
+
+</div>
+```
+
+</div>
+
+<script>
+
+    /* Check login */
+
+    if (
+        localStorage.getItem("isLoggedIn")
+        !== "true"
+    ) {
+
+        window.location.href =
+            "login.html";
+
+    }
+
+
+    /* Load registered user */
+
+    const user =
+        JSON.parse(
+            localStorage.getItem("pawUser")
+        );
+
+
+    if (user) {
+
+        document.getElementById("fullName").value =
+            user.name || "";
+
+        document.getElementById("phone").value =
+            user.phone || "";
+
+        document.getElementById("email").value =
+            user.email || "";
+
+        document.getElementById("city").value =
+            user.city || "";
+
+    }
+
+
+    /* Submit application */
+
+    document
+        .getElementById("adoptionForm")
+        .addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+
+            const yard =
+                document.querySelector(
+                    'input[name="yard"]:checked'
+                );
+
+            const existingPets =
+                document.querySelector(
+                    'input[name="existingPets"]:checked'
+                );
+
+
+            const application = {
+
+                id:
+                    "APP-" +
+                    Date.now(),
+
+                applicant:
+                    document.getElementById(
+                        "fullName"
+                    ).value,
+
+                email:
+                    document.getElementById(
+                        "email"
+                    ).value,
+
+                phone:
+                    document.getElementById(
+                        "phone"
+                    ).value,
+
+                city:
+                    document.getElementById(
+                        "city"
+                    ).value,
+
+                petName:
+                    document.getElementById(
+                        "petName"
+                    ).value,
+
+                petType:
+                    document.getElementById(
+                        "petType"
+                    ).value,
+
+                homeType:
+                    document.getElementById(
+                        "homeType"
+                    ).value,
+
+                yard:
+                    yard ? yard.value : "",
+
+                existingPets:
+                    existingPets
+                    ? existingPets.value
+                    : "",
+
+                experience:
+                    document.getElementById(
+                        "experience"
+                    ).value,
+
+                reason:
+                    document.getElementById(
+                        "reason"
+                    ).value,
+
+                carePlan:
+                    document.getElementById(
+                        "carePlan"
+                    ).value,
+
+                status:
+                    "Submitted",
+
+                date:
+                    new Date().toLocaleDateString()
+
+            };
+
+
+            /* Save application */
+
+            localStorage.setItem(
+                "adoptionApplication",
+                JSON.stringify(application)
+            );
+
+
+            /* Show success */
+
+            document.getElementById(
+                "successMessage"
+            ).style.display = "block";
+
+
+            document.getElementById(
+                "adoptionForm"
+            ).reset();
+
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
+        });
+
+</script>
+
+</body>
+
+</html>

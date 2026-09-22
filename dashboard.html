@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+```
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Dashboard | PawRescue</title>
+
+<style>
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+    }
+
+    body {
+        background: #f7f8fa;
+        color: #333;
+    }
+
+    /* NAVBAR */
+
+    header {
+        height: 70px;
+        background: white;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 6%;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    }
+
+    .logo {
+        color: #f97316;
+        font-size: 25px;
+        font-weight: bold;
+    }
+
+    nav {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+    nav a {
+        text-decoration: none;
+        color: #444;
+        font-size: 14px;
+    }
+
+    nav a:hover {
+        color: #f97316;
+    }
+
+    .logout-btn {
+        background: #f97316;
+        color: white;
+        border: none;
+        padding: 10px 18px;
+        border-radius: 7px;
+        cursor: pointer;
+    }
+
+    /* MAIN */
+
+    .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 40px auto;
+    }
+
+    .welcome {
+        margin-bottom: 30px;
+    }
+
+    .welcome h1 {
+        font-size: 30px;
+        margin-bottom: 8px;
+    }
+
+    .welcome p {
+        color: #777;
+    }
+
+    /* CARDS */
+
+    .cards {
+        display: grid;
+        grid-template-columns:
+            repeat(auto-fit, minmax(220px, 1fr));
+
+        gap: 20px;
+    }
+
+    .card {
+        background: white;
+        padding: 25px;
+        border-radius: 15px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.07);
+        transition: 0.3s;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+    }
+
+    .icon {
+        font-size: 38px;
+        margin-bottom: 15px;
+    }
+
+    .card h3 {
+        margin-bottom: 10px;
+    }
+
+    .card p {
+        color: #777;
+        line-height: 1.5;
+        font-size: 14px;
+    }
+
+    .card a {
+        display: inline-block;
+        margin-top: 15px;
+        color: #f97316;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    /* PROFILE */
+
+    .profile {
+        background: white;
+        margin-top: 30px;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.07);
+    }
+
+    .profile h2 {
+        margin-bottom: 20px;
+    }
+
+    .profile-row {
+        display: grid;
+        grid-template-columns: 150px 1fr;
+        padding: 12px 0;
+        border-bottom: 1px solid #eee;
+    }
+
+    .profile-row strong {
+        color: #555;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 700px) {
+
+        header {
+            padding: 0 20px;
+        }
+
+        nav a {
+            display: none;
+        }
+
+        .container {
+            width: 92%;
+        }
+
+        .welcome h1 {
+            font-size: 24px;
+        }
+
+    }
+
+</style>
+```
+
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header>
+
+```
+<div class="logo">
+    🐾 PawRescue
+</div>
+
+<nav>
+
+    <a href="index.html">
+        Home
+    </a>
+
+    <a href="pet.html">
+        Pets
+    </a>
+
+    <a href="adoption.html">
+        Adoption
+    </a>
+
+    <a href="rescue.html">
+        Rescue
+    </a>
+
+    <button
+        class="logout-btn"
+        onclick="logout()">
+
+        Logout
+
+    </button>
+
+</nav>
+```
+
+</header>
+
+<!-- MAIN CONTENT -->
+
+<div class="container">
+
+```
+<!-- WELCOME -->
+
+<div class="welcome">
+
+    <h1>
+        Welcome, <span id="userName">User</span>! 🐾
+    </h1>
+
+    <p>
+        Manage your pets, adoption applications
+        and rescue activities.
+    </p>
+
+</div>
+
+
+<!-- DASHBOARD CARDS -->
+
+<div class="cards">
+
+
+    <!-- FIND PET -->
+
+    <div class="card">
+
+        <div class="icon">
+            🐶
+        </div>
+
+        <h3>
+            Find a Pet
+        </h3>
+
+        <p>
+            Browse pets looking for a loving
+            and safe home.
+        </p>
+
+        <a href="pet.html">
+            Browse Pets →
+        </a>
+
+    </div>
+
+
+    <!-- APPLICATION -->
+
+    <div class="card">
+
+        <div class="icon">
+            📋
+        </div>
+
+        <h3>
+            My Applications
+        </h3>
+
+        <p>
+            Track your pet adoption applications
+            and their status.
+        </p>
+
+        <a href="my-applications.html">
+            View Applications →
+        </a>
+
+    </div>
+
+
+    <!-- FAVORITES -->
+
+    <div class="card">
+
+        <div class="icon">
+            ❤️
+        </div>
+
+        <h3>
+            Favorite Pets
+        </h3>
+
+        <p>
+            View the pets you have saved
+            for later.
+        </p>
+
+        <a href="favorites.html">
+            View Favorites →
+        </a>
+
+    </div>
+
+
+    <!-- RESCUE -->
+
+    <div class="card">
+
+        <div class="icon">
+            🚨
+        </div>
+
+        <h3>
+            Rescue Request
+        </h3>
+
+        <p>
+            Report an animal that needs
+            immediate help.
+        </p>
+
+        <a href="rescue-request.html">
+            Request Rescue →
+        </a>
+
+    </div>
+
+
+    <!-- FOSTER -->
+
+    <div class="card">
+
+        <div class="icon">
+            🏠
+        </div>
+
+        <h3>
+            Foster a Pet
+        </h3>
+
+        <p>
+            Provide temporary care for
+            a rescued animal.
+        </p>
+
+        <a href="foster.html">
+            Become a Foster →
+        </a>
+
+    </div>
+
+
+    <!-- MAP -->
+
+    <div class="card">
+
+        <div class="icon">
+            🗺️
+        </div>
+
+        <h3>
+            Rescue Map
+        </h3>
+
+        <p>
+            Find nearby shelters, vets
+            and rescue centers.
+        </p>
+
+        <a href="map.html">
+            Open Map →
+        </a>
+
+    </div>
+
+
+    <!-- DONATE -->
+
+    <div class="card">
+
+        <div class="icon">
+            ❤️
+        </div>
+
+        <h3>
+            Donate
+        </h3>
+
+        <p>
+            Help us provide food, shelter
+            and medical care.
+        </p>
+
+        <a href="donate.html">
+            Support Rescue →
+        </a>
+
+    </div>
+
+
+    <!-- VOLUNTEER -->
+
+    <div class="card">
+
+        <div class="icon">
+            🤝
+        </div>
+
+        <h3>
+            Volunteer
+        </h3>
+
+        <p>
+            Join our rescue community
+            and help animals in need.
+        </p>
+
+        <a href="volunteer.html">
+            Join Us →
+        </a>
+<a href="map.html">
+    Open Map →
+</a>
+    </div>
+
+</div>
+
+
+<!-- PROFILE -->
+
+<div class="profile">
+
+    <h2>
+        👤 My Profile
+    </h2>
+
+
+    <div class="profile-row">
+
+        <strong>
+            Name
+        </strong>
+
+        <span id="profileName">
+            -
+        </span>
+
+    </div>
+
+
+    <div class="profile-row">
+
+        <strong>
+            Email
+        </strong>
+
+        <span id="profileEmail">
+            -
+        </span>
+
+    </div>
+
+
+    <div class="profile-row">
+
+        <strong>
+            Phone
+        </strong>
+
+        <span id="profilePhone">
+            -
+        </span>
+
+    </div>
+
+
+    <div class="profile-row">
+
+        <strong>
+            City
+        </strong>
+
+        <span id="profileCity">
+            -
+        </span>
+
+    </div>
+
+
+    <div class="profile-row">
+
+        <strong>
+            Account Type
+        </strong>
+
+        <span id="profileRole">
+            -
+        </span>
+
+    </div>
+
+</div>
+```
+
+</div>
+
+<script>
+
+
+/* CHECK LOGIN */
+
+const loggedIn =
+    localStorage.getItem("isLoggedIn");
+
+
+if (loggedIn !== "true") {
+
+    window.location.href =
+        "login.html";
+
+}
+
+
+/* GET USER */
+
+const user =
+    JSON.parse(
+        localStorage.getItem("pawUser")
+    );
+
+
+/* DISPLAY USER */
+
+if (user) {
+
+    document.getElementById("userName")
+        .textContent =
+        user.name || "User";
+
+    document.getElementById("profileName")
+        .textContent =
+        user.name || "-";
+
+    document.getElementById("profileEmail")
+        .textContent =
+        user.email || "-";
+
+    document.getElementById("profilePhone")
+        .textContent =
+        user.phone || "-";
+
+    document.getElementById("profileCity")
+        .textContent =
+        user.city || "-";
+
+    document.getElementById("profileRole")
+        .textContent =
+        user.role || "-";
+
+}
+
+
+/* LOGOUT */
+
+function logout() {
+
+    localStorage.removeItem(
+        "isLoggedIn"
+    );
+
+    window.location.href =
+        "login.html";
+
+}
+
+</script>
+
+</body>
+
+</html>

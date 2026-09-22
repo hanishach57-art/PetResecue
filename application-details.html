@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+```
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Application Details | PawRescue</title>
+
+<style>
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+    }
+
+    body {
+        background: #f7f8fa;
+        color: #333;
+    }
+
+    header {
+        height: 70px;
+        background: white;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 6%;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    }
+
+    .logo {
+        color: #f97316;
+        font-size: 25px;
+        font-weight: bold;
+    }
+
+    nav {
+        display: flex;
+        gap: 20px;
+    }
+
+    nav a {
+        text-decoration: none;
+        color: #444;
+    }
+
+    nav a:hover {
+        color: #f97316;
+    }
+
+    .container {
+        width: 90%;
+        max-width: 1000px;
+        margin: 40px auto;
+    }
+
+    .back {
+        display: inline-block;
+        margin-bottom: 20px;
+        color: #f97316;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .title {
+        margin-bottom: 25px;
+    }
+
+    .title h1 {
+        margin-bottom: 8px;
+    }
+
+    .title p {
+        color: #777;
+    }
+
+    .application {
+        background: white;
+        border-radius: 15px;
+        padding: 30px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.07);
+    }
+
+    .application-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 25px;
+        border-bottom: 1px solid #eee;
+        margin-bottom: 25px;
+    }
+
+    .application-id {
+        color: #777;
+        margin-top: 6px;
+    }
+
+    .status {
+        padding: 9px 18px;
+        border-radius: 20px;
+        background: #dbeafe;
+        color: #1d4ed8;
+        font-weight: bold;
+    }
+
+    .section {
+        margin-bottom: 30px;
+    }
+
+    .section h2 {
+        color: #f97316;
+        font-size: 20px;
+        margin-bottom: 18px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid #fed7aa;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+    }
+
+    .info {
+        background: #f9fafb;
+        padding: 15px;
+        border-radius: 9px;
+    }
+
+    .info.full {
+        grid-column: 1 / -1;
+    }
+
+    .info span {
+        display: block;
+        color: #888;
+        font-size: 13px;
+        margin-bottom: 6px;
+    }
+
+    .info strong {
+        color: #333;
+        line-height: 1.5;
+    }
+
+    .text-box {
+        background: #fff7ed;
+        padding: 18px;
+        border-radius: 10px;
+        line-height: 1.7;
+        color: #555;
+    }
+
+    .actions {
+        display: flex;
+        gap: 12px;
+        margin-top: 25px;
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 12px 20px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .primary {
+        background: #f97316;
+        color: white;
+    }
+
+    .secondary {
+        background: #eee;
+        color: #333;
+    }
+
+    .not-found {
+        background: white;
+        padding: 60px 20px;
+        text-align: center;
+        border-radius: 15px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.07);
+    }
+
+    .not-found h2 {
+        margin-bottom: 10px;
+    }
+
+    .not-found p {
+        color: #777;
+        margin-bottom: 20px;
+    }
+
+    @media(max-width: 650px) {
+
+        header {
+            padding: 0 20px;
+        }
+
+        nav {
+            display: none;
+        }
+
+        .grid {
+            grid-template-columns: 1fr;
+        }
+
+        .info.full {
+            grid-column: auto;
+        }
+
+        .application {
+            padding: 20px;
+        }
+
+        .application-header {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .actions {
+            flex-direction: column;
+        }
+
+        .btn {
+            text-align: center;
+        }
+
+    }
+
+</style>
+```
+
+</head>
+
+<body>
+
+<header>
+
+```
+<div class="logo">
+    🐾 PawRescue
+</div>
+
+<nav>
+
+    <a href="dashboard.html">
+        Dashboard
+    </a>
+
+    <a href="pet.html">
+        Pets
+    </a>
+
+    <a href="adoption.html">
+        Adoption
+    </a>
+
+</nav>
+```
+
+</header>
+
+<div class="container">
+
+```
+<a
+    href="my-applications.html"
+    class="back">
+
+    ← Back to My Applications
+
+</a>
+
+
+<div class="title">
+
+    <h1>
+        📋 Application Details
+    </h1>
+
+    <p>
+        Review the information submitted
+        with your adoption application.
+    </p>
+
+</div>
+
+
+<!-- NOT FOUND -->
+
+<div
+    id="notFound"
+    class="not-found"
+    style="display:none;">
+
+    <h2>
+        Application Not Found
+    </h2>
+
+    <p>
+        You have not submitted an adoption
+        application yet.
+    </p>
+
+    <a
+        href="adoption-application.html"
+        class="btn primary">
+
+        Apply for Adoption
+
+    </a>
+
+</div>
+
+
+<!-- APPLICATION -->
+
+<div
+    id="application"
+    class="application"
+    style="display:none;">
+
+
+    <!-- HEADER -->
+
+    <div class="application-header">
+
+        <div>
+
+            <h2>
+                🐾 <span id="petName">
+                    Pet
+                </span>
+            </h2>
+
+            <p class="application-id">
+
+                Application ID:
+                <strong id="applicationId">
+                    -
+                </strong>
+
+            </p>
+
+        </div>
+
+
+        <div
+            id="status"
+            class="status">
+
+            Submitted
+
+        </div>
+
+    </div>
+
+
+    <!-- APPLICANT -->
+
+    <div class="section">
+
+        <h2>
+            👤 Applicant Information
+        </h2>
+
+
+        <div class="grid">
+
+
+            <div class="info">
+
+                <span>
+                    Full Name
+                </span>
+
+                <strong id="applicant">
+                    -
+                </strong>
+
+            </div>
+
+
+            <div class="info">
+
+                <span>
+                    Email
+                </span>
+
+                <strong id="email">
+                    -
+                </strong>
+
+            </div>
+
+
+            <div class="info">
+
+                <span>
+                    Phone
+                </span>
+
+                <strong id="phone">
+                    -
+                </strong>
+
+            </div>
+
+
+            <div class="info">
+
+                <span>
+                    City
+                </span>
+
+                <strong id="city">
+                    -
+                </strong>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- PET -->
+
+    <div class="section">
+
+        <h2>
+            🐶 Pet Information
+        </h2>
+
+
+        <div class="grid">
+
+
+            <div class="info">
+
+                <span>
+                    Pet Name
+                </span>
+
+                <strong id="petName2">
+                    -
+                </strong>
+
+            </div>
+
+
+            <div class="info">
+
+                <span>
+                    Pet Type
+                </span>
+
+                <strong id="petType">
+                    -
+                </strong>
+
+            </div>
+
+
+            <div class="info">
+
+                <span>
+                    Application Date
+                </span>
+
+                <strong id="date">
+                    -
+                </strong>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- HOME -->
+
+    <div class="section">
+
+        <h2>
+            🏠 Home Information
+        </h2>
+
+
+        <div class="grid">
+
+
+            <div class="info">
+
+                <span>
+                    Home Type
+                </span>
+
+                <strong id="homeType">
+                    -
+                </strong>
+
+            </div>
+
+
+            <div class="info">
+
+                <span>
+                    Secure Outdoor Area
+                </span>
+
+                <strong id="yard">
+                    -
+                </strong>
+
+            </div>
+
+
+            <div class="info">
+
+                <span>
+                    Existing Pets
+                </span>
+
+                <strong id="existingPets">
+                    -
+                </strong>
+
+            </div>
+
+
+            <div class="info">
+
+                <span>
+                    Previous Pet Experience
+                </span>
+
+                <strong id="experience">
+                    -
+                </strong>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- REASON -->
+
+    <div class="section">
+
+        <h2>
+            ❤️ Reason for Adoption
+        </h2>
+
+        <div
+            class="text-box"
+            id="reason">
+
+            -
+
+        </div>
+
+    </div>
+
+
+    <!-- CARE PLAN -->
+
+    <div class="section">
+
+        <h2>
+            🩺 Pet Care Plan
+        </h2>
+
+        <div
+            class="text-box"
+            id="carePlan">
+
+            -
+
+        </div>
+
+    </div>
+
+
+    <!-- ACTIONS -->
+
+    <div class="actions">
+
+        <a
+            href="adoption-status.html"
+            class="btn primary">
+
+            Track Application Status
+
+        </a>
+
+        <a
+            href="my-applications.html"
+            class="btn secondary">
+
+            Back to Applications
+
+        </a>
+
+    </div>
+
+</div>
+```
+
+</div>
+
+<script>
+
+
+/* CHECK LOGIN */
+
+if (
+    localStorage.getItem("isLoggedIn")
+    !== "true"
+) {
+
+    window.location.href =
+        "login.html";
+
+}
+
+
+/* GET APPLICATION */
+
+const application =
+    JSON.parse(
+        localStorage.getItem(
+            "adoptionApplication"
+        )
+    );
+
+
+/* IF NO APPLICATION */
+
+if (!application) {
+
+    document.getElementById(
+        "notFound"
+    ).style.display = "block";
+
+}
+
+
+/* IF APPLICATION EXISTS */
+
+else {
+
+    document.getElementById(
+        "application"
+    ).style.display = "block";
+
+
+    /* Header */
+
+    document.getElementById(
+        "petName"
+    ).textContent =
+        application.petName || "Pet";
+
+
+    document.getElementById(
+        "applicationId"
+    ).textContent =
+        application.id || "-";
+
+
+    /* Status */
+
+    document.getElementById(
+        "status"
+    ).textContent =
+        application.status || "Submitted";
+
+
+    /* Applicant */
+
+    document.getElementById(
+        "applicant"
+    ).textContent =
+        application.applicant || "-";
+
+
+    document.getElementById(
+        "email"
+    ).textContent =
+        application.email || "-";
+
+
+    document.getElementById(
+        "phone"
+    ).textContent =
+        application.phone || "-";
+
+
+    document.getElementById(
+        "city"
+    ).textContent =
+        application.city || "-";
+
+
+    /* Pet */
+
+    document.getElementById(
+        "petName2"
+    ).textContent =
+        application.petName || "-";
+
+
+    document.getElementById(
+        "petType"
+    ).textContent =
+        application.petType || "-";
+
+
+    document.getElementById(
+        "date"
+    ).textContent =
+        application.date || "-";
+
+
+    /* Home */
+
+    document.getElementById(
+        "homeType"
+    ).textContent =
+        application.homeType || "-";
+
+
+    document.getElementById(
+        "yard"
+    ).textContent =
+        application.yard || "-";
+
+
+    document.getElementById(
+        "existingPets"
+    ).textContent =
+        application.existingPets || "-";
+
+
+    document.getElementById(
+        "experience"
+    ).textContent =
+        application.experience || "-";
+
+
+    /* Reason */
+
+    document.getElementById(
+        "reason"
+    ).textContent =
+        application.reason || "-";
+
+
+    /* Care plan */
+
+    document.getElementById(
+        "carePlan"
+    ).textContent =
+        application.carePlan || "-";
+
+}
+
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,2118 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+```
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Pet Rescue & Adoption</title>
+
+<style>
+
+    /* ================================
+       GENERAL
+    ================================= */
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        background: #fff8f2;
+        color: #333;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    button {
+        cursor: pointer;
+    }
+
+
+    /* ================================
+       HEADER
+    ================================= */
+
+    header {
+        background: #ff7043;
+        color: white;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        padding: 18px 7%;
+
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+
+    .logo {
+        font-size: 26px;
+        font-weight: bold;
+    }
+
+    nav {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    nav a {
+        color: white;
+        font-weight: bold;
+    }
+
+    nav a:hover {
+        color: #ffe0b2;
+    }
+
+
+    /* ================================
+       HERO
+    ================================= */
+
+    .hero {
+        min-height: 550px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        text-align: center;
+
+        color: white;
+
+        background:
+            linear-gradient(
+                rgba(0, 0, 0, 0.45),
+                rgba(0, 0, 0, 0.45)
+            ),
+            url("https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=1600&q=80");
+
+        background-size: cover;
+        background-position: center;
+    }
+
+    .hero-content {
+        max-width: 800px;
+        padding: 30px;
+    }
+
+    .hero h1 {
+        font-size: 55px;
+        margin-bottom: 20px;
+    }
+
+    .hero p {
+        font-size: 21px;
+        line-height: 1.6;
+        margin-bottom: 30px;
+    }
+
+
+    /* ================================
+       BUTTONS
+    ================================= */
+
+    .btn {
+        display: inline-block;
+
+        background: #ff5722;
+        color: white;
+
+        padding: 13px 25px;
+
+        border: none;
+        border-radius: 7px;
+
+        font-weight: bold;
+
+        margin: 5px;
+    }
+
+    .btn:hover {
+        background: #e64a19;
+    }
+
+    .green {
+        background: #4caf50;
+    }
+
+    .green:hover {
+        background: #388e3c;
+    }
+
+    .blue {
+        background: #2196f3;
+    }
+
+    .blue:hover {
+        background: #1976d2;
+    }
+
+    .red {
+        background: #f44336;
+    }
+
+    .red:hover {
+        background: #d32f2f;
+    }
+
+
+    /* ================================
+       SECTIONS
+    ================================= */
+
+    section {
+        padding: 70px 7%;
+    }
+
+    .section-title {
+        text-align: center;
+        color: #e64a19;
+        font-size: 36px;
+        margin-bottom: 40px;
+    }
+
+    .intro {
+        text-align: center;
+        max-width: 850px;
+        margin: auto;
+        line-height: 1.8;
+        font-size: 18px;
+    }
+
+
+    /* ================================
+       STATISTICS
+    ================================= */
+
+    .stats {
+        display: flex;
+        justify-content: center;
+        gap: 25px;
+        flex-wrap: wrap;
+
+        background: #fff0e6;
+    }
+
+    .stat {
+        background: white;
+
+        width: 200px;
+
+        padding: 30px;
+
+        text-align: center;
+
+        border-radius: 12px;
+
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .stat h3 {
+        color: #e64a19;
+        font-size: 32px;
+    }
+
+
+    /* ================================
+       PET CARDS
+    ================================= */
+
+    .pet-container {
+        display: grid;
+
+        grid-template-columns:
+            repeat(auto-fit, minmax(260px, 1fr));
+
+        gap: 30px;
+    }
+
+    .pet-card {
+        background: white;
+
+        border-radius: 14px;
+
+        overflow: hidden;
+
+        box-shadow:
+            0 5px 18px rgba(0,0,0,0.12);
+
+        transition: 0.3s;
+    }
+
+    .pet-card:hover {
+        transform: translateY(-7px);
+    }
+
+    .pet-card img {
+        width: 100%;
+        height: 230px;
+        object-fit: cover;
+    }
+
+    .pet-info {
+        padding: 22px;
+    }
+
+    .pet-info h3 {
+        color: #e64a19;
+        margin-bottom: 12px;
+        font-size: 24px;
+    }
+
+    .pet-info p {
+        margin: 7px 0;
+    }
+
+    .available {
+        color: #2e7d32;
+        font-weight: bold;
+    }
+
+
+    /* ================================
+       SEARCH
+    ================================= */
+
+    .search-box {
+        max-width: 800px;
+        margin: 0 auto 40px;
+
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .search-box input,
+    .search-box select {
+        flex: 1;
+        min-width: 180px;
+
+        padding: 13px;
+
+        border: 1px solid #ccc;
+        border-radius: 7px;
+    }
+
+
+    /* ================================
+       FORMS
+    ================================= */
+
+    .form-container {
+        max-width: 650px;
+
+        margin: auto;
+
+        background: white;
+
+        padding: 35px;
+
+        border-radius: 14px;
+
+        box-shadow:
+            0 5px 20px rgba(0,0,0,0.1);
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    label {
+        margin-top: 15px;
+        margin-bottom: 6px;
+
+        font-weight: bold;
+    }
+
+    input,
+    select,
+    textarea {
+        padding: 13px;
+
+        border: 1px solid #ccc;
+
+        border-radius: 7px;
+
+        font-size: 15px;
+    }
+
+    textarea {
+        resize: vertical;
+    }
+
+    form button {
+        margin-top: 25px;
+    }
+
+
+    /* ================================
+       CARDS
+    ================================= */
+
+    .cards {
+        display: grid;
+
+        grid-template-columns:
+            repeat(auto-fit, minmax(250px, 1fr));
+
+        gap: 30px;
+    }
+
+    .card {
+        background: white;
+
+        padding: 30px;
+
+        text-align: center;
+
+        border-radius: 14px;
+
+        box-shadow:
+            0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .card-icon {
+        font-size: 55px;
+        margin-bottom: 15px;
+    }
+
+    .card h3 {
+        color: #e64a19;
+        margin-bottom: 12px;
+    }
+
+    .card p {
+        line-height: 1.6;
+    }
+
+
+    /* ================================
+       ADMIN DASHBOARD
+    ================================= */
+
+    .dashboard {
+        display: grid;
+
+        grid-template-columns:
+            repeat(auto-fit, minmax(180px, 1fr));
+
+        gap: 20px;
+
+        margin-bottom: 30px;
+    }
+
+    .dashboard-box {
+        background: white;
+
+        padding: 25px;
+
+        text-align: center;
+
+        border-radius: 10px;
+
+        box-shadow:
+            0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .dashboard-box h3 {
+        color: #e64a19;
+        font-size: 30px;
+    }
+
+
+    /* ================================
+       CTA
+    ================================= */
+
+    .cta {
+        background: #ff7043;
+
+        color: white;
+
+        text-align: center;
+    }
+
+    .cta h2 {
+        font-size: 38px;
+        margin-bottom: 15px;
+    }
+
+    .cta p {
+        margin-bottom: 20px;
+        font-size: 18px;
+    }
+
+
+    /* ================================
+       FOOTER
+    ================================= */
+
+    footer {
+        background: #333;
+
+        color: white;
+
+        text-align: center;
+
+        padding: 35px 20px;
+    }
+
+    .footer-links {
+        margin: 20px 0;
+    }
+
+    .footer-links a {
+        color: white;
+        margin: 0 10px;
+    }
+
+    .footer-links a:hover {
+        color: #ff7043;
+    }
+
+
+    /* ================================
+       MOBILE
+    ================================= */
+
+    @media (max-width: 700px) {
+
+        header {
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        nav {
+            justify-content: center;
+        }
+
+        .hero h1 {
+            font-size: 38px;
+        }
+
+        .hero p {
+            font-size: 17px;
+        }
+
+        section {
+            padding: 50px 5%;
+        }
+
+    }
+
+</style>
+```
+
+</head>
+
+<body>
+
+<!-- ==================================================
+     NAVIGATION
+=================================================== -->
+
+<header>
+
+```
+<div class="logo">
+    🐾 Pet Rescue
+</div>
+
+<nav>
+
+    <a href="#home">Home</a>
+
+    <a href="#pets">Pets</a>
+
+    <a href="#rescue">Rescue</a>
+
+    <a href="#adoption">Adoption</a>
+
+    <a href="#volunteer">Volunteer</a>
+
+    <a href="#login">Login</a>
+
+    <a href="#admin">Admin</a>
+
+</nav>
+```
+
+</header>
+
+<!-- ==================================================
+     HOME
+=================================================== -->
+
+<section class="hero" id="home">
+
+```
+<div class="hero-content">
+
+    <h1>
+        Give Them a Home ❤️
+    </h1>
+
+    <p>
+        Help abandoned, injured and homeless pets
+        find safety, care and loving forever homes.
+    </p>
+
+    <a href="#pets" class="btn">
+        🐶 Find a Pet
+    </a>
+
+    <a href="#rescue" class="btn green">
+        🚑 Report a Rescue
+    </a>
+
+</div>
+```
+
+</section>
+
+<!-- ==================================================
+     INTRODUCTION
+=================================================== -->
+
+<section>
+
+```
+<h2 class="section-title">
+    Welcome to Pet Rescue 🐾
+</h2>
+
+<p class="intro">
+
+    Our Pet Rescue and Adoption System connects
+    people who want to help animals with rescued
+    pets that need care, shelter and loving homes.
+
+    You can find pets, report rescue cases,
+    apply for adoption or become a volunteer.
+
+</p>
+```
+
+</section>
+
+<!-- ==================================================
+     STATISTICS
+=================================================== -->
+
+<section class="stats">
+
+```
+<div class="stat">
+
+    <h3>500+</h3>
+
+    <p>Pets Rescued</p>
+
+</div>
+
+
+<div class="stat">
+
+    <h3>300+</h3>
+
+    <p>Pets Adopted</p>
+
+</div>
+
+
+<div class="stat">
+
+    <h3>150+</h3>
+
+    <p>Volunteers</p>
+
+</div>
+
+
+<div class="stat">
+
+    <h3>50+</h3>
+
+    <p>Active Cases</p>
+
+</div>
+```
+
+</section>
+
+<!-- ==================================================
+     HOW WE HELP
+=================================================== -->
+
+<section>
+
+```
+<h2 class="section-title">
+    How We Help
+</h2>
+
+<div class="cards">
+
+
+    <div class="card">
+
+        <div class="card-icon">
+            🚑
+        </div>
+
+        <h3>Rescue</h3>
+
+        <p>
+            Report injured, abandoned or homeless
+            pets and help them receive immediate care.
+        </p>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="card-icon">
+            🏠
+        </div>
+
+        <h3>Adoption</h3>
+
+        <p>
+            Find a suitable pet and give them
+            a safe and loving forever home.
+        </p>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="card-icon">
+            ❤️
+        </div>
+
+        <h3>Care</h3>
+
+        <p>
+            Help rescued pets receive food,
+            shelter, medical care and love.
+        </p>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="card-icon">
+            🦺
+        </div>
+
+        <h3>Volunteer</h3>
+
+        <p>
+            Become a volunteer and help with
+            rescue, transportation and pet care.
+        </p>
+
+    </div>
+
+</div>
+```
+
+</section>
+
+<!-- ==================================================
+     PETS
+=================================================== -->
+
+<section id="pets">
+
+```
+<h2 class="section-title">
+    Pets Available for Adoption 🐶🐱
+</h2>
+
+
+<!-- SEARCH AND FILTER -->
+
+<div class="search-box">
+
+    <input
+        type="text"
+        id="searchPet"
+        placeholder="🔍 Search pet name or breed..."
+        onkeyup="filterPets()"
+    >
+
+
+    <select
+        id="speciesFilter"
+        onchange="filterPets()"
+    >
+
+        <option value="all">
+            All Animals
+        </option>
+
+        <option value="dog">
+            Dogs
+        </option>
+
+        <option value="cat">
+            Cats
+        </option>
+
+    </select>
+
+
+    <select
+        id="genderFilter"
+        onchange="filterPets()"
+    >
+
+        <option value="all">
+            All Genders
+        </option>
+
+        <option value="male">
+            Male
+        </option>
+
+        <option value="female">
+            Female
+        </option>
+
+    </select>
+
+</div>
+
+
+<div class="pet-container" id="petContainer">
+
+
+    <!-- BUDDY -->
+
+    <div
+        class="pet-card"
+        data-name="buddy"
+        data-breed="labrador"
+        data-species="dog"
+        data-gender="male"
+    >
+
+        <img
+            src="https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=600&q=80"
+            alt="Buddy the Labrador"
+        >
+
+        <div class="pet-info">
+
+            <h3>Buddy 🐶</h3>
+
+            <p>
+                <strong>Breed:</strong>
+                Labrador
+            </p>
+
+            <p>
+                <strong>Age:</strong>
+                2 Years
+            </p>
+
+            <p>
+                <strong>Gender:</strong>
+                Male
+            </p>
+
+            <p>
+                <strong>Location:</strong>
+                Vijayawada
+            </p>
+
+            <p>
+                <strong>Health:</strong>
+                Healthy
+            </p>
+
+            <p class="available">
+                ● Available for Adoption
+            </p>
+
+            <button
+                class="btn"
+                onclick="showPet(
+                    'Buddy',
+                    'Labrador',
+                    '2 Years',
+                    'Male',
+                    'Vijayawada',
+                    'Healthy'
+                )"
+            >
+                View Details
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- LUNA -->
+
+    <div
+        class="pet-card"
+        data-name="luna"
+        data-breed="persian"
+        data-species="cat"
+        data-gender="female"
+    >
+
+        <img
+            src="https://images.unsplash.com/photo-1573865526739-10659fec78a5?auto=format&fit=crop&w=600&q=80"
+            alt="Luna the Persian Cat"
+        >
+
+        <div class="pet-info">
+
+            <h3>Luna 🐱</h3>
+
+            <p>
+                <strong>Breed:</strong>
+                Persian
+            </p>
+
+            <p>
+                <strong>Age:</strong>
+                1 Year
+            </p>
+
+            <p>
+                <strong>Gender:</strong>
+                Female
+            </p>
+
+            <p>
+                <strong>Location:</strong>
+                Guntur
+            </p>
+
+            <p>
+                <strong>Health:</strong>
+                Healthy
+            </p>
+
+            <p class="available">
+                ● Available for Adoption
+            </p>
+
+            <button
+                class="btn"
+                onclick="showPet(
+                    'Luna',
+                    'Persian',
+                    '1 Year',
+                    'Female',
+                    'Guntur',
+                    'Healthy'
+                )"
+            >
+                View Details
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- ROCKY -->
+
+    <div
+        class="pet-card"
+        data-name="rocky"
+        data-breed="golden retriever"
+        data-species="dog"
+        data-gender="male"
+    >
+
+        <img
+            src="https://images.unsplash.com/photo-1558788353-f76d92427f16?auto=format&fit=crop&w=600&q=80"
+            alt="Rocky the Golden Retriever"
+        >
+
+        <div class="pet-info">
+
+            <h3>Rocky 🐕</h3>
+
+            <p>
+                <strong>Breed:</strong>
+                Golden Retriever
+            </p>
+
+            <p>
+                <strong>Age:</strong>
+                3 Years
+            </p>
+
+            <p>
+                <strong>Gender:</strong>
+                Male
+            </p>
+
+            <p>
+                <strong>Location:</strong>
+                Hyderabad
+            </p>
+
+            <p>
+                <strong>Health:</strong>
+                Healthy
+            </p>
+
+            <p class="available">
+                ● Available for Adoption
+            </p>
+
+            <button
+                class="btn"
+                onclick="showPet(
+                    'Rocky',
+                    'Golden Retriever',
+                    '3 Years',
+                    'Male',
+                    'Hyderabad',
+                    'Healthy'
+                )"
+            >
+                View Details
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+```
+
+</section>
+
+<!-- ==================================================
+     PET DETAILS
+=================================================== -->
+
+<section id="petDetails">
+
+```
+<h2 class="section-title">
+    Pet Details
+</h2>
+
+<div class="form-container">
+
+    <h2 id="detailName">
+        Select a pet
+    </h2>
+
+    <br>
+
+    <p>
+        <strong>Breed:</strong>
+        <span id="detailBreed">-</span>
+    </p>
+
+    <br>
+
+    <p>
+        <strong>Age:</strong>
+        <span id="detailAge">-</span>
+    </p>
+
+    <br>
+
+    <p>
+        <strong>Gender:</strong>
+        <span id="detailGender">-</span>
+    </p>
+
+    <br>
+
+    <p>
+        <strong>Location:</strong>
+        <span id="detailLocation">-</span>
+    </p>
+
+    <br>
+
+    <p>
+        <strong>Health:</strong>
+        <span id="detailHealth">-</span>
+    </p>
+
+    <br>
+
+    <a href="#adoption" class="btn">
+        ❤️ Adopt This Pet
+    </a>
+
+</div>
+```
+
+</section>
+
+<!-- ==================================================
+     RESCUE REPORT
+=================================================== -->
+
+<section id="rescue">
+
+```
+<h2 class="section-title">
+    🚑 Report a Rescue
+</h2>
+
+<div class="form-container">
+
+    <form id="rescueForm">
+
+        <label>
+            Reporter Name
+        </label>
+
+        <input
+            type="text"
+            required
+            placeholder="Enter your name"
+        >
+
+
+        <label>
+            Phone Number
+        </label>
+
+        <input
+            type="tel"
+            required
+            placeholder="Enter phone number"
+        >
+
+
+        <label>
+            Email
+        </label>
+
+        <input
+            type="email"
+            required
+            placeholder="Enter email"
+        >
+
+
+        <label>
+            Pet Type
+        </label>
+
+        <select required>
+
+            <option value="">
+                Select Pet Type
+            </option>
+
+            <option>Dog</option>
+
+            <option>Cat</option>
+
+            <option>Bird</option>
+
+            <option>Other</option>
+
+        </select>
+
+
+        <label>
+            Location
+        </label>
+
+        <input
+            type="text"
+            required
+            placeholder="Where did you find the pet?"
+        >
+
+
+        <label>
+            Condition
+        </label>
+
+        <select required>
+
+            <option value="">
+                Select Condition
+            </option>
+
+            <option>Healthy</option>
+
+            <option>Injured</option>
+
+            <option>Very Injured</option>
+
+            <option>Emergency</option>
+
+        </select>
+
+
+        <label>
+            Description
+        </label>
+
+        <textarea
+            rows="5"
+            required
+            placeholder="Describe the situation..."
+        ></textarea>
+
+
+        <label>
+            Pet Image
+        </label>
+
+        <input
+            type="file"
+            accept="image/*"
+        >
+
+
+        <button
+            type="submit"
+            class="btn green"
+        >
+            Submit Rescue Report
+        </button>
+
+    </form>
+
+</div>
+```
+
+</section>
+
+<!-- ==================================================
+     ADOPTION
+=================================================== -->
+
+<section id="adoption">
+
+```
+<h2 class="section-title">
+    🏠 Pet Adoption Form
+</h2>
+
+<div class="form-container">
+
+    <form id="adoptionForm">
+
+        <label>
+            Full Name
+        </label>
+
+        <input
+            type="text"
+            required
+            placeholder="Enter your full name"
+        >
+
+
+        <label>
+            Email
+        </label>
+
+        <input
+            type="email"
+            required
+            placeholder="Enter your email"
+        >
+
+
+        <label>
+            Phone
+        </label>
+
+        <input
+            type="tel"
+            required
+            placeholder="Enter phone number"
+        >
+
+
+        <label>
+            Age
+        </label>
+
+        <input
+            type="number"
+            min="18"
+            required
+            placeholder="Your age"
+        >
+
+
+        <label>
+            Address
+        </label>
+
+        <textarea
+            rows="3"
+            required
+            placeholder="Enter your address"
+        ></textarea>
+
+
+        <label>
+            City
+        </label>
+
+        <input
+            type="text"
+            required
+            placeholder="Enter city"
+        >
+
+
+        <label>
+            Occupation
+        </label>
+
+        <input
+            type="text"
+            placeholder="Student / Employee / Business..."
+        >
+
+
+        <label>
+            Select Pet
+        </label>
+
+        <select required>
+
+            <option value="">
+                Select a pet
+            </option>
+
+            <option>Buddy</option>
+
+            <option>Luna</option>
+
+            <option>Rocky</option>
+
+        </select>
+
+
+        <label>
+            Why do you want to adopt?
+        </label>
+
+        <textarea
+            rows="4"
+            required
+            placeholder="Tell us why you want to adopt..."
+        ></textarea>
+
+
+        <label>
+            Do you have experience with pets?
+        </label>
+
+        <select required>
+
+            <option value="">
+                Select
+            </option>
+
+            <option>Yes</option>
+
+            <option>No</option>
+
+        </select>
+
+
+        <label>
+            Do you have other pets?
+        </label>
+
+        <select required>
+
+            <option value="">
+                Select
+            </option>
+
+            <option>Yes</option>
+
+            <option>No</option>
+
+        </select>
+
+
+        <label>
+            Do you have enough space for the pet?
+        </label>
+
+        <select required>
+
+            <option value="">
+                Select
+            </option>
+
+            <option>Yes</option>
+
+            <option>No</option>
+
+        </select>
+
+
+        <button
+            type="submit"
+            class="btn"
+        >
+            ❤️ Submit Adoption Request
+        </button>
+
+    </form>
+
+</div>
+```
+
+</section>
+
+<!-- ==================================================
+     VOLUNTEER
+=================================================== -->
+
+<section id="volunteer">
+
+```
+<h2 class="section-title">
+    🦺 Become a Volunteer
+</h2>
+
+<div class="form-container">
+
+    <form id="volunteerForm">
+
+        <label>
+            Full Name
+        </label>
+
+        <input
+            type="text"
+            required
+        >
+
+
+        <label>
+            Email
+        </label>
+
+        <input
+            type="email"
+            required
+        >
+
+
+        <label>
+            Phone
+        </label>
+
+        <input
+            type="tel"
+            required
+        >
+
+
+        <label>
+            Location
+        </label>
+
+        <input
+            type="text"
+            required
+        >
+
+
+        <label>
+            Skills
+        </label>
+
+        <textarea
+            rows="4"
+            placeholder="Pet first aid, animal handling, transportation..."
+        ></textarea>
+
+
+        <label>
+            Availability
+        </label>
+
+        <select required>
+
+            <option value="">
+                Select availability
+            </option>
+
+            <option>
+                Weekdays
+            </option>
+
+            <option>
+                Weekends
+            </option>
+
+            <option>
+                Both
+            </option>
+
+        </select>
+
+
+        <label>
+            Previous Experience
+        </label>
+
+        <textarea
+            rows="4"
+            placeholder="Describe your experience..."
+        ></textarea>
+
+
+        <button
+            type="submit"
+            class="btn green"
+        >
+            Join as Volunteer
+        </button>
+
+    </form>
+
+</div>
+```
+
+</section>
+
+<!-- ==================================================
+     LOGIN
+=================================================== -->
+
+<section id="login">
+
+```
+<h2 class="section-title">
+    🔐 Login
+</h2>
+
+<div class="form-container">
+
+    <form id="loginForm">
+
+        <label>
+            Email
+        </label>
+
+        <input
+            type="email"
+            required
+            placeholder="Enter email"
+        >
+
+
+        <label>
+            Password
+        </label>
+
+        <input
+            type="password"
+            required
+            placeholder="Enter password"
+        >
+
+
+        <button
+            type="submit"
+            class="btn blue"
+        >
+            Login
+        </button>
+
+    </form>
+
+
+    <p style="text-align:center; margin-top:20px;">
+
+        Don't have an account?
+
+        <a
+            href="#register"
+            style="color:#e64a19;font-weight:bold;"
+        >
+            Register
+        </a>
+
+    </p>
+
+</div>
+```
+
+</section>
+
+<!-- ==================================================
+     REGISTER
+=================================================== -->
+
+<section id="register">
+
+```
+<h2 class="section-title">
+    📝 Create Account
+</h2>
+
+<div class="form-container">
+
+    <form id="registerForm">
+
+        <label>
+            Full Name
+        </label>
+
+        <input
+            type="text"
+            required
+        >
+
+
+        <label>
+            Email
+        </label>
+
+        <input
+            type="email"
+            required
+        >
+
+
+        <label>
+            Phone
+        </label>
+
+        <input
+            type="tel"
+            required
+        >
+
+
+        <label>
+            Address
+        </label>
+
+        <textarea
+            rows="3"
+            required
+        ></textarea>
+
+
+        <label>
+            Password
+        </label>
+
+        <input
+            type="password"
+            required
+        >
+
+
+        <label>
+            Confirm Password
+        </label>
+
+        <input
+            type="password"
+            required
+        >
+
+
+        <button
+            type="submit"
+            class="btn"
+        >
+            Create Account
+        </button>
+
+    </form>
+
+</div>
+```
+
+</section>
+
+<!-- ==================================================
+     ADMIN DASHBOARD
+=================================================== -->
+
+<section id="admin">
+
+```
+<h2 class="section-title">
+    👨‍💼 Admin Dashboard
+</h2>
+
+
+<div class="dashboard">
+
+
+    <div class="dashboard-box">
+
+        <h3>250</h3>
+
+        <p>Total Users</p>
+
+    </div>
+
+
+    <div class="dashboard-box">
+
+        <h3>80</h3>
+
+        <p>Total Pets</p>
+
+    </div>
+
+
+    <div class="dashboard-box">
+
+        <h3>120</h3>
+
+        <p>Pets Rescued</p>
+
+    </div>
+
+
+    <div class="dashboard-box">
+
+        <h3>65</h3>
+
+        <p>Pets Adopted</p>
+
+    </div>
+
+
+    <div class="dashboard-box">
+
+        <h3>15</h3>
+
+        <p>Pending Requests</p>
+
+    </div>
+
+
+    <a href="rescue.html">
+    Report Rescue
+</a>
+
+</div>
+
+
+<div class="cards">
+
+    <div class="card">
+
+        <div class="card-icon">
+            🐾
+        </div>
+
+        <h3>Manage Pets</h3>
+
+        <p>
+            Add, edit and remove pet listings.
+        </p>
+
+        <button class="btn">
+            Manage Pets
+        </button>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="card-icon">
+            🚑
+        </div>
+
+        <h3>Rescue Reports</h3>
+
+        <p>
+            Review and manage rescue reports.
+        </p>
+
+        <button class="btn green">
+            View Reports
+        </button>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="card-icon">
+            ❤️
+        </div>
+
+        <h3>Adoption Requests</h3>
+
+        <p>
+            Approve or reject adoption applications.
+        </p>
+
+        <button class="btn blue">
+            View Requests
+        </button>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="card-icon">
+            👥
+        </div>
+
+        <h3>Users</h3>
+
+        <p>
+            Manage registered users and volunteers.
+        </p>
+
+        <button class="btn">
+            Manage Users
+        </button>
+
+    </div>
+
+</div>
+```
+
+</section>
+
+<!-- ==================================================
+     CALL TO ACTION
+=================================================== -->
+
+<section class="cta">
+
+```
+<h2>
+    Be Their Hero 🐕🐈
+</h2>
+
+<p>
+    One small act of kindness can change an animal's life.
+</p>
+
+<a href="#pets" class="btn">
+    Find Your Pet ❤️
+</a>
+
+<a href="#volunteer" class="btn green">
+    Become a Volunteer
+</a>
+```
+
+</section>
+
+<!-- ==================================================
+     FOOTER
+=================================================== -->
+
+<footer>
+
+```
+<h3>
+    🐾 Pet Rescue & Adoption System
+</h3>
+
+<p>
+    Helping pets find love, care and forever homes.
+</p>
+
+<div class="footer-links">
+
+    <a href="#home">Home</a>
+
+    <a href="#pets">Pets</a>
+
+    <a href="#rescue">Rescue</a>
+
+    <a href="#adoption">Adoption</a>
+
+    <a href="#volunteer">Volunteer</a>
+
+    <a href="#login">Login</a>
+
+</div>
+
+<p>
+    © 2026 Pet Rescue Project
+</p>
+```
+
+</footer>
+
+<!-- ==================================================
+     JAVASCRIPT
+=================================================== -->
+
+<script>
+
+    /* ================================
+       PET SEARCH AND FILTER
+    ================================= */
+
+    function filterPets() {
+
+        const search =
+            document
+            .getElementById("searchPet")
+            .value
+            .toLowerCase();
+
+        const species =
+            document
+            .getElementById("speciesFilter")
+            .value;
+
+        const gender =
+            document
+            .getElementById("genderFilter")
+            .value;
+
+        const pets =
+            document
+            .querySelectorAll(".pet-card");
+
+
+        pets.forEach(function(pet) {
+
+            const name =
+                pet.dataset.name;
+
+            const breed =
+                pet.dataset.breed;
+
+            const petSpecies =
+                pet.dataset.species;
+
+            const petGender =
+                pet.dataset.gender;
+
+
+            const matchesSearch =
+                name.includes(search) ||
+                breed.includes(search);
+
+
+            const matchesSpecies =
+                species === "all" ||
+                petSpecies === species;
+
+
+            const matchesGender =
+                gender === "all" ||
+                petGender === gender;
+
+
+            if (
+                matchesSearch &&
+                matchesSpecies &&
+                matchesGender
+            ) {
+
+                pet.style.display = "block";
+
+            } else {
+
+                pet.style.display = "none";
+
+            }
+
+        });
+
+    }
+
+
+    /* ================================
+       PET DETAILS
+    ================================= */
+
+    function showPet(
+        name,
+        breed,
+        age,
+        gender,
+        location,
+        health
+    ) {
+
+        document.getElementById("detailName")
+            .textContent = name;
+
+        document.getElementById("detailBreed")
+            .textContent = breed;
+
+        document.getElementById("detailAge")
+            .textContent = age;
+
+        document.getElementById("detailGender")
+            .textContent = gender;
+
+        document.getElementById("detailLocation")
+            .textContent = location;
+
+        document.getElementById("detailHealth")
+            .textContent = health;
+
+
+        document
+            .getElementById("petDetails")
+            .scrollIntoView({
+                behavior: "smooth"
+            });
+
+    }
+
+
+    /* ================================
+       ADOPTION FORM
+    ================================= */
+
+    document
+        .getElementById("adoptionForm")
+        .addEventListener(
+            "submit",
+            function(event) {
+
+                event.preventDefault();
+
+                alert(
+                    "❤️ Adoption request submitted successfully!"
+                );
+
+                this.reset();
+
+            }
+        );
+
+
+    /* ================================
+       RESCUE FORM
+    ================================= */
+
+    document
+        .getElementById("rescueForm")
+        .addEventListener(
+            "submit",
+            function(event) {
+
+                event.preventDefault();
+
+                alert(
+                    "🚑 Rescue report submitted successfully!"
+                );
+
+                this.reset();
+
+            }
+        );
+
+
+    /* ================================
+       VOLUNTEER FORM
+    ================================= */
+
+    document
+        .getElementById("volunteerForm")
+        .addEventListener(
+            "submit",
+            function(event) {
+
+                event.preventDefault();
+
+                alert(
+                    "🦺 Thank you for becoming a volunteer!"
+                );
+
+                this.reset();
+
+            }
+        );
+
+
+    /* ================================
+       LOGIN
+    ================================= */
+
+    document
+        .getElementById("loginForm")
+        .addEventListener(
+            "submit",
+            function(event) {
+
+                event.preventDefault();
+
+                alert(
+                    "🔐 Login successful! Backend authentication will be added later."
+                );
+
+                this.reset();
+
+            }
+        );
+
+
+    /* ================================
+       REGISTER
+    ================================= */
+
+    document
+        .getElementById("registerForm")
+        .addEventListener(
+            "submit",
+            function(event) {
+
+                event.preventDefault();
+
+                alert(
+                    "🎉 Account created successfully!"
+                );
+
+                this.reset();
+
+            }
+        );
+
+</script>
+
+</body>
+
+</html>

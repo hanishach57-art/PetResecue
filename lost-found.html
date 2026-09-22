@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+```
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Lost & Found Pets | PawRescue</title>
+
+<style>
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+    }
+
+    body {
+        background: #f5f7fa;
+        color: #333;
+    }
+
+    header {
+        height: 70px;
+        background: white;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 6%;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    }
+
+    .logo {
+        color: #f97316;
+        font-size: 25px;
+        font-weight: bold;
+    }
+
+    nav {
+        display: flex;
+        gap: 20px;
+    }
+
+    nav a {
+        text-decoration: none;
+        color: #444;
+    }
+
+    nav a:hover {
+        color: #f97316;
+    }
+
+    .container {
+        width: 92%;
+        max-width: 950px;
+        margin: 40px auto;
+    }
+
+    .title {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .title h1 {
+        margin-bottom: 10px;
+    }
+
+    .title p {
+        color: #777;
+    }
+
+    .type-buttons {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+        margin-bottom: 25px;
+    }
+
+    .type-btn {
+        padding: 18px;
+        border: 2px solid #ddd;
+        background: white;
+        border-radius: 12px;
+        cursor: pointer;
+        font-size: 17px;
+        font-weight: bold;
+    }
+
+    .type-btn.active-lost {
+        border-color: #dc2626;
+        background: #fef2f2;
+        color: #dc2626;
+    }
+
+    .type-btn.active-found {
+        border-color: #16a34a;
+        background: #f0fdf4;
+        color: #16a34a;
+    }
+
+    .form-box {
+        background: white;
+        padding: 35px;
+        border-radius: 15px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    }
+
+    .section-title {
+        color: #f97316;
+        margin: 25px 0 18px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid #fed7aa;
+    }
+
+    .section-title:first-child {
+        margin-top: 0;
+    }
+
+    .row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+
+    .form-group {
+        margin-bottom: 18px;
+    }
+
+    label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 7px;
+    }
+
+    input,
+    select,
+    textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 14px;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+        outline: none;
+        border-color: #f97316;
+    }
+
+    textarea {
+        min-height: 110px;
+        resize: vertical;
+    }
+
+    .location-row {
+        display: flex;
+        gap: 10px;
+    }
+
+    .location-row input {
+        flex: 1;
+    }
+
+    .location-btn {
+        padding: 12px 15px;
+        border: none;
+        border-radius: 8px;
+        background: #2563eb;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .preview {
+        display: none;
+        max-width: 250px;
+        max-height: 200px;
+        margin-top: 12px;
+        border-radius: 10px;
+    }
+
+    .submit-btn {
+        width: 100%;
+        padding: 15px;
+        border: none;
+        border-radius: 8px;
+        background: #f97316;
+        color: white;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .submit-btn:hover {
+        background: #ea580c;
+    }
+
+    .success {
+        display: none;
+        background: #dcfce7;
+        color: #166534;
+        padding: 25px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .success h2 {
+        margin-bottom: 8px;
+    }
+
+    .success a {
+        display: inline-block;
+        margin-top: 15px;
+        color: #166534;
+        font-weight: bold;
+    }
+
+    @media(max-width: 650px) {
+
+        header {
+            padding: 0 20px;
+        }
+
+        nav {
+            display: none;
+        }
+
+        .row,
+        .type-buttons {
+            grid-template-columns: 1fr;
+        }
+
+        .form-box {
+            padding: 22px;
+        }
+
+        .location-row {
+            flex-direction: column;
+        }
+
+        .location-btn {
+            padding: 12px;
+        }
+
+    }
+
+</style>
+```
+
+</head>
+
+<body>
+
+<header>
+
+```
+<div class="logo">
+    🐾 PawRescue
+</div>
+
+<nav>
+
+    <a href="dashboard.html">
+        Dashboard
+    </a>
+
+    <a href="pet.html">
+        Pets
+    </a>
+
+    <a href="map.html">
+        Map
+    </a>
+
+</nav>
+```
+
+</header>
+
+<div class="container">
+
+```
+<div class="title">
+
+    <h1>
+        🐾 Lost & Found Pets
+    </h1>
+
+    <p>
+        Help reunite lost pets with their families.
+    </p>
+
+</div>
+
+
+<!-- TYPE -->
+
+<div class="type-buttons">
+
+    <button
+        type="button"
+        id="lostBtn"
+        class="type-btn active-lost"
+        onclick="setType('Lost')">
+
+        🔴 I Lost a Pet
+
+    </button>
+
+
+    <button
+        type="button"
+        id="foundBtn"
+        class="type-btn"
+        onclick="setType('Found')">
+
+        🟢 I Found a Pet
+
+    </button>
+
+</div>
+
+
+<!-- SUCCESS -->
+
+<div
+    id="success"
+    class="success">
+
+    <h2>
+        ✅ Report Submitted
+    </h2>
+
+    <p>
+        Your lost/found pet report has been saved.
+    </p>
+
+    <p>
+        Report ID:
+        <strong id="reportId"></strong>
+    </p>
+
+    <a href="lost-found-list.html">
+        View Lost & Found Pets →
+    </a>
+
+</div>
+
+
+<!-- FORM -->
+
+<div class="form-box">
+
+    <form id="lostFoundForm">
+
+
+        <input
+            type="hidden"
+            id="reportType"
+            value="Lost">
+
+
+        <!-- PET -->
+
+        <h2 class="section-title">
+            🐶 Pet Information
+        </h2>
+
+
+        <div class="row">
+
+
+            <div class="form-group">
+
+                <label>
+                    Pet Name
+                </label>
+
+                <input
+                    type="text"
+                    id="petName"
+                    placeholder="Example: Bruno"
+                    required>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Animal Type
+                </label>
+
+                <select
+                    id="animalType"
+                    required>
+
+                    <option value="">
+                        Select Animal
+                    </option>
+
+                    <option>
+                        Dog
+                    </option>
+
+                    <option>
+                        Cat
+                    </option>
+
+                    <option>
+                        Bird
+                    </option>
+
+                    <option>
+                        Rabbit
+                    </option>
+
+                    <option>
+                        Other
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <div class="row">
+
+
+            <div class="form-group">
+
+                <label>
+                    Breed
+                </label>
+
+                <input
+                    type="text"
+                    id="breed"
+                    placeholder="Example: Labrador">
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Gender
+                </label>
+
+                <select id="gender">
+
+                    <option>
+                        Unknown
+                    </option>
+
+                    <option>
+                        Male
+                    </option>
+
+                    <option>
+                        Female
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <div class="row">
+
+
+            <div class="form-group">
+
+                <label>
+                    Color
+                </label>
+
+                <input
+                    type="text"
+                    id="color"
+                    placeholder="Example: Brown">
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Approximate Age
+                </label>
+
+                <input
+                    type="text"
+                    id="age"
+                    placeholder="Example: 2 years">
+
+            </div>
+
+        </div>
+
+
+        <!-- DATE -->
+
+        <h2 class="section-title">
+            📅 Date & Location
+        </h2>
+
+
+        <div class="form-group">
+
+            <label id="dateLabel">
+                Date Lost
+            </label>
+
+            <input
+                type="date"
+                id="eventDate"
+                required>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label id="locationLabel">
+                Last Seen Location
+            </label>
+
+
+            <div class="location-row">
+
+                <input
+                    type="text"
+                    id="location"
+                    placeholder="Enter location"
+                    required>
+
+
+                <button
+                    type="button"
+                    class="location-btn"
+                    onclick="getLocation()">
+
+                    📍 Use My Location
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="row">
+
+
+            <div class="form-group">
+
+                <label>
+                    Latitude
+                </label>
+
+                <input
+                    type="text"
+                    id="latitude"
+                    readonly>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Longitude
+                </label>
+
+                <input
+                    type="text"
+                    id="longitude"
+                    readonly>
+
+            </div>
+
+        </div>
+
+
+        <!-- DESCRIPTION -->
+
+        <h2 class="section-title">
+            📝 Description
+        </h2>
+
+
+        <div class="form-group">
+
+            <label>
+                Additional Information
+            </label>
+
+            <textarea
+                id="description"
+                placeholder="Describe markings, collar, behavior, or other useful details..."
+                required></textarea>
+
+        </div>
+
+
+        <!-- PHOTO -->
+
+        <h2 class="section-title">
+            📷 Photo
+        </h2>
+
+
+        <div class="form-group">
+
+            <label>
+                Upload Pet Photo
+            </label>
+
+            <input
+                type="file"
+                id="photo"
+                accept="image/*">
+
+            <img
+                id="preview"
+                class="preview">
+
+        </div>
+
+
+        <!-- CONTACT -->
+
+        <h2 class="section-title">
+            📞 Contact Information
+        </h2>
+
+
+        <div class="row">
+
+
+            <div class="form-group">
+
+                <label>
+                    Your Name
+                </label>
+
+                <input
+                    type="text"
+                    id="reporterName"
+                    required>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Phone Number
+                </label>
+
+                <input
+                    type="tel"
+                    id="reporterPhone"
+                    required>
+
+            </div>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Email
+            </label>
+
+            <input
+                type="email"
+                id="reporterEmail"
+                required>
+
+        </div>
+
+
+        <button
+            type="submit"
+            class="submit-btn">
+
+            🚨 Submit Lost Pet Report
+
+        </button>
+
+
+    </form>
+
+</div>
+```
+
+</div>
+
+<script>
+
+
+/* LOGIN */
+
+if (
+    localStorage.getItem("isLoggedIn")
+    !== "true"
+) {
+
+    window.location.href =
+        "login.html";
+
+}
+
+
+/* USER */
+
+const user =
+    JSON.parse(
+        localStorage.getItem("pawUser")
+    );
+
+
+if (user) {
+
+    document.getElementById(
+        "reporterName"
+    ).value =
+        user.name || "";
+
+    document.getElementById(
+        "reporterEmail"
+    ).value =
+        user.email || "";
+
+    document.getElementById(
+        "reporterPhone"
+    ).value =
+        user.phone || "";
+
+}
+
+
+/* TYPE */
+
+function setType(type) {
+
+
+    document.getElementById(
+        "reportType"
+    ).value = type;
+
+
+    const lostBtn =
+        document.getElementById(
+            "lostBtn"
+        );
+
+
+    const foundBtn =
+        document.getElementById(
+            "foundBtn"
+        );
+
+
+    const dateLabel =
+        document.getElementById(
+            "dateLabel"
+        );
+
+
+    const locationLabel =
+        document.getElementById(
+            "locationLabel"
+        );
+
+
+    const submitBtn =
+        document.querySelector(
+            ".submit-btn"
+        );
+
+
+    if (type === "Lost") {
+
+        lostBtn.classList.add(
+            "active-lost"
+        );
+
+        foundBtn.classList.remove(
+            "active-found"
+        );
+
+        dateLabel.textContent =
+            "Date Lost";
+
+        locationLabel.textContent =
+            "Last Seen Location";
+
+        submitBtn.textContent =
+            "🚨 Submit Lost Pet Report";
+
+    }
+
+    else {
+
+        foundBtn.classList.add(
+            "active-found"
+        );
+
+        lostBtn.classList.remove(
+            "active-lost"
+        );
+
+        dateLabel.textContent =
+            "Date Found";
+
+        locationLabel.textContent =
+            "Found Location";
+
+        submitBtn.textContent =
+            "🐾 Submit Found Pet Report";
+
+    }
+
+}
+
+
+/* LOCATION */
+
+function getLocation() {
+
+    if (!navigator.geolocation) {
+
+        alert(
+            "Geolocation is not supported."
+        );
+
+        return;
+
+    }
+
+
+    navigator.geolocation.getCurrentPosition(
+
+        function(position) {
+
+            const lat =
+                position.coords.latitude;
+
+            const lng =
+                position.coords.longitude;
+
+
+            document.getElementById(
+                "latitude"
+            ).value =
+                lat.toFixed(6);
+
+
+            document.getElementById(
+                "longitude"
+            ).value =
+                lng.toFixed(6);
+
+
+            document.getElementById(
+                "location"
+            ).value =
+                lat.toFixed(6) +
+                ", " +
+                lng.toFixed(6);
+
+        },
+
+        function() {
+
+            alert(
+                "Unable to get your location."
+            );
+
+        }
+
+    );
+
+}
+
+
+/* PHOTO PREVIEW */
+
+document.getElementById(
+    "photo"
+).addEventListener(
+    "change",
+    function() {
+
+        const file =
+            this.files[0];
+
+        if (!file) {
+            return;
+        }
+
+
+        const reader =
+            new FileReader();
+
+
+        reader.onload =
+            function(event) {
+
+                const preview =
+                    document.getElementById(
+                        "preview"
+                    );
+
+                preview.src =
+                    event.target.result;
+
+                preview.style.display =
+                    "block";
+
+            };
+
+
+        reader.readAsDataURL(file);
+
+    }
+);
+
+
+/* SUBMIT */
+
+document.getElementById(
+    "lostFoundForm"
+).addEventListener(
+    "submit",
+    function(event) {
+
+        event.preventDefault();
+
+
+        const report = {
+
+            id:
+                "LF-" +
+                Date.now(),
+
+            type:
+                document.getElementById(
+                    "reportType"
+                ).value,
+
+            petName:
+                document.getElementById(
+                    "petName"
+                ).value,
+
+            animalType:
+                document.getElementById(
+                    "animalType"
+                ).value,
+
+            breed:
+                document.getElementById(
+                    "breed"
+                ).value,
+
+            gender:
+                document.getElementById(
+                    "gender"
+                ).value,
+
+            color:
+                document.getElementById(
+                    "color"
+                ).value,
+
+            age:
+                document.getElementById(
+                    "age"
+                ).value,
+
+            eventDate:
+                document.getElementById(
+                    "eventDate"
+                ).value,
+
+            location:
+                document.getElementById(
+                    "location"
+                ).value,
+
+            latitude:
+                document.getElementById(
+                    "latitude"
+                ).value,
+
+            longitude:
+                document.getElementById(
+                    "longitude"
+                ).value,
+
+            description:
+                document.getElementById(
+                    "description"
+                ).value,
+
+            reporterName:
+                document.getElementById(
+                    "reporterName"
+                ).value,
+
+            reporterPhone:
+                document.getElementById(
+                    "reporterPhone"
+                ).value,
+
+            reporterEmail:
+                document.getElementById(
+                    "reporterEmail"
+                ).value,
+
+            status:
+                "Active",
+
+            createdAt:
+                new Date().toLocaleString()
+
+        };
+
+
+        localStorage.setItem(
+            "lostFoundReport",
+            JSON.stringify(report)
+        );
+
+
+        document.getElementById(
+            "reportId"
+        ).textContent =
+            report.id;
+
+
+        document.getElementById(
+            "success"
+        ).style.display =
+            "block";
+
+
+        document.getElementById(
+            "lostFoundForm"
+        ).style.display =
+            "none";
+
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+    }
+);
+
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | PawRescue</title>
+
+```
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+    }
+
+    body {
+        min-height: 100vh;
+        background: linear-gradient(135deg, #fff7ed, #ffedd5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .container {
+        width: 100%;
+        max-width: 500px;
+        background: white;
+        padding: 35px;
+        border-radius: 20px;
+        box-shadow: 0 10px 35px rgba(0,0,0,0.12);
+    }
+
+    .logo {
+        text-align: center;
+        color: #f97316;
+        font-size: 30px;
+        font-weight: bold;
+        margin-bottom: 8px;
+    }
+
+    .subtitle {
+        text-align: center;
+        color: #777;
+        margin-bottom: 25px;
+    }
+
+    .form-group {
+        margin-bottom: 17px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 7px;
+        font-weight: bold;
+        color: #333;
+    }
+
+    input,
+    select {
+        width: 100%;
+        padding: 13px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 15px;
+    }
+
+    input:focus,
+    select:focus {
+        outline: none;
+        border-color: #f97316;
+    }
+
+    .row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+    }
+
+    .register-btn {
+        width: 100%;
+        padding: 14px;
+        background: #f97316;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        margin-top: 5px;
+    }
+
+    .register-btn:hover {
+        background: #ea580c;
+    }
+
+    .message {
+        padding: 12px;
+        margin-bottom: 18px;
+        border-radius: 8px;
+        text-align: center;
+        display: none;
+    }
+
+    .error {
+        display: block;
+        background: #fee2e2;
+        color: #b91c1c;
+    }
+
+    .success {
+        display: block;
+        background: #dcfce7;
+        color: #15803d;
+    }
+
+    .bottom {
+        text-align: center;
+        margin-top: 20px;
+        color: #666;
+    }
+
+    .bottom a {
+        color: #f97316;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .home {
+        display: block;
+        text-align: center;
+        margin-top: 15px;
+        color: #555;
+        text-decoration: none;
+    }
+
+    @media (max-width: 550px) {
+        .container {
+            padding: 25px 20px;
+        }
+
+        .row {
+            grid-template-columns: 1fr;
+            gap: 0;
+        }
+    }
+</style>
+```
+
+</head>
+
+<body>
+
+<div class="container">
+
+```
+<div class="logo">🐾 PawRescue</div>
+
+<p class="subtitle">
+    Create your account to help rescue and adopt pets.
+</p>
+
+<div id="message" class="message"></div>
+
+<form id="registerForm">
+
+    <div class="row">
+
+        <div class="form-group">
+            <label for="firstName">First Name</label>
+
+            <input
+                type="text"
+                id="firstName"
+                placeholder="First name"
+                required
+            >
+        </div>
+
+        <div class="form-group">
+            <label for="lastName">Last Name</label>
+
+            <input
+                type="text"
+                id="lastName"
+                placeholder="Last name"
+                required
+            >
+        </div>
+
+    </div>
+
+
+    <div class="form-group">
+
+        <label for="email">
+            Email Address
+        </label>
+
+        <input
+            type="email"
+            id="email"
+            placeholder="example@gmail.com"
+            required
+        >
+
+    </div>
+
+
+    <div class="form-group">
+
+        <label for="phone">
+            Phone Number
+        </label>
+
+        <input
+            type="tel"
+            id="phone"
+            placeholder="9876543210"
+            required
+        >
+
+    </div>
+
+
+    <div class="form-group">
+
+        <label for="city">
+            City
+        </label>
+
+        <input
+            type="text"
+            id="city"
+            placeholder="Enter your city"
+            required
+        >
+
+    </div>
+
+
+    <div class="form-group">
+
+        <label for="role">
+            I want to
+        </label>
+
+        <select id="role" required>
+
+            <option value="">
+                Select an option
+            </option>
+
+            <option value="adopter">
+                Adopt a Pet
+            </option>
+
+            <option value="foster">
+                Foster a Pet
+            </option>
+
+            <option value="volunteer">
+                Become a Volunteer
+            </option>
+
+        </select>
+
+    </div>
+
+
+    <div class="form-group">
+
+        <label for="password">
+            Password
+        </label>
+
+        <input
+            type="password"
+            id="password"
+            placeholder="Minimum 6 characters"
+            minlength="6"
+            required
+        >
+
+    </div>
+
+
+    <div class="form-group">
+
+        <label for="confirmPassword">
+            Confirm Password
+        </label>
+
+        <input
+            type="password"
+            id="confirmPassword"
+            placeholder="Enter password again"
+            required
+        >
+
+    </div>
+
+
+    <div class="form-group">
+
+        <label>
+            <input
+                type="checkbox"
+                id="terms"
+                style="width:auto;"
+                required
+            >
+
+            I agree to the Terms & Conditions
+        </label>
+
+    </div>
+
+
+    <button
+        type="submit"
+        class="register-btn">
+
+        Create Account
+
+    </button>
+
+</form>
+
+
+<p class="bottom">
+
+    Already have an account?
+
+    <a href="login.html">
+        Login
+    </a>
+
+</p>
+
+
+<a
+    href="index.html"
+    class="home">
+
+    ← Back to Home
+
+</a>
+```
+
+</div>
+
+<script>
+
+document
+    .getElementById("registerForm")
+    .addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+        const firstName =
+            document.getElementById("firstName").value.trim();
+
+        const lastName =
+            document.getElementById("lastName").value.trim();
+
+        const email =
+            document.getElementById("email").value.trim();
+
+        const phone =
+            document.getElementById("phone").value.trim();
+
+        const city =
+            document.getElementById("city").value.trim();
+
+        const role =
+            document.getElementById("role").value;
+
+        const password =
+            document.getElementById("password").value;
+
+        const confirmPassword =
+            document.getElementById("confirmPassword").value;
+
+        const message =
+            document.getElementById("message");
+
+
+        // Check password
+
+        if (password !== confirmPassword) {
+
+            message.className = "message error";
+
+            message.textContent =
+                "Passwords do not match.";
+
+            return;
+        }
+
+
+        // Check password length
+
+        if (password.length < 6) {
+
+            message.className = "message error";
+
+            message.textContent =
+                "Password must be at least 6 characters.";
+
+            return;
+        }
+
+
+        // Check existing account
+
+        const oldUser =
+            localStorage.getItem("pawUser");
+
+        if (oldUser) {
+
+            const user =
+                JSON.parse(oldUser);
+
+            if (user.email === email) {
+
+                message.className =
+                    "message error";
+
+                message.textContent =
+                    "This email is already registered.";
+
+                return;
+            }
+        }
+
+
+        // Create user
+
+        const newUser = {
+
+            firstName: firstName,
+
+            lastName: lastName,
+
+            name: firstName + " " + lastName,
+
+            email: email,
+
+            phone: phone,
+
+            city: city,
+
+            role: role,
+
+            password: password
+
+        };
+
+
+        // Save account
+
+        localStorage.setItem(
+            "pawUser",
+            JSON.stringify(newUser)
+        );
+
+
+        // Show success
+
+        message.className =
+            "message success";
+
+        message.textContent =
+            "Registration successful!";
+
+
+        // Clear form
+
+        document
+            .getElementById("registerForm")
+            .reset();
+
+
+        // Go to login
+
+        setTimeout(function() {
+
+            window.location.href =
+                "login.html";
+
+        }, 1500);
+
+    });
+
+</script>
+
+</body>
+</html>

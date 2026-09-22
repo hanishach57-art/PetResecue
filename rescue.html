@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+```
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Report Rescue | Pet Rescue</title>
+
+<style>
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        background: #fff8f2;
+        color: #333;
+    }
+
+
+    /* ================= HEADER ================= */
+
+    header {
+        background: #ff7043;
+        color: white;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        padding: 18px 7%;
+
+        position: sticky;
+        top: 0;
+
+        z-index: 1000;
+    }
+
+    .logo {
+        font-size: 25px;
+        font-weight: bold;
+    }
+
+    nav {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    nav a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    nav a:hover {
+        color: #ffe0b2;
+    }
+
+
+    /* ================= HERO ================= */
+
+    .hero {
+        min-height: 300px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        text-align: center;
+
+        color: white;
+
+        background:
+            linear-gradient(
+                rgba(198, 40, 40, 0.75),
+                rgba(198, 40, 40, 0.75)
+            ),
+            url("https://images.unsplash.com/photo-1544568100-847a948585b9?auto=format&fit=crop&w=1600&q=80");
+
+        background-size: cover;
+        background-position: center;
+    }
+
+    .hero-content {
+        padding: 30px;
+    }
+
+    .hero h1 {
+        font-size: 45px;
+        margin-bottom: 15px;
+    }
+
+    .hero p {
+        font-size: 19px;
+        line-height: 1.6;
+    }
+
+
+    /* ================= SECTION ================= */
+
+    .section {
+        padding: 60px 7%;
+    }
+
+
+    /* ================= INFO CARDS ================= */
+
+    .info-container {
+        display: grid;
+
+        grid-template-columns:
+            repeat(auto-fit, minmax(220px, 1fr));
+
+        gap: 25px;
+
+        max-width: 1100px;
+
+        margin: auto auto 50px;
+    }
+
+    .info-card {
+        background: white;
+
+        padding: 25px;
+
+        text-align: center;
+
+        border-radius: 12px;
+
+        box-shadow:
+            0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .info-card .icon {
+        font-size: 45px;
+
+        margin-bottom: 15px;
+    }
+
+    .info-card h3 {
+        color: #e64a19;
+
+        margin-bottom: 10px;
+    }
+
+    .info-card p {
+        line-height: 1.6;
+
+        color: #666;
+    }
+
+
+    /* ================= FORM ================= */
+
+    .form-container {
+        max-width: 750px;
+
+        margin: auto;
+
+        background: white;
+
+        padding: 35px;
+
+        border-radius: 15px;
+
+        box-shadow:
+            0 5px 20px rgba(0,0,0,0.12);
+    }
+
+    .form-title {
+        text-align: center;
+
+        color: #e64a19;
+
+        margin-bottom: 10px;
+
+        font-size: 30px;
+    }
+
+    .form-description {
+        text-align: center;
+
+        color: #666;
+
+        margin-bottom: 30px;
+
+        line-height: 1.6;
+    }
+
+    form {
+        display: flex;
+
+        flex-direction: column;
+    }
+
+    label {
+        font-weight: bold;
+
+        margin-top: 17px;
+
+        margin-bottom: 7px;
+    }
+
+    .required {
+        color: red;
+    }
+
+    input,
+    select,
+    textarea {
+
+        width: 100%;
+
+        padding: 13px;
+
+        border: 1px solid #ccc;
+
+        border-radius: 7px;
+
+        font-size: 15px;
+
+        font-family: Arial, sans-serif;
+    }
+
+    textarea {
+        resize: vertical;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+
+        outline: none;
+
+        border-color: #ff7043;
+
+        box-shadow:
+            0 0 4px rgba(255,112,67,0.3);
+    }
+
+
+    /* ================= RADIO ================= */
+
+    .radio-container {
+
+        display: flex;
+
+        gap: 20px;
+
+        flex-wrap: wrap;
+
+        margin-top: 8px;
+    }
+
+    .radio-item {
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 7px;
+    }
+
+    .radio-item input {
+
+        width: auto;
+    }
+
+
+    /* ================= EMERGENCY ================= */
+
+    .emergency-box {
+
+        background: #ffebee;
+
+        border-left: 5px solid #f44336;
+
+        padding: 15px;
+
+        margin-top: 25px;
+
+        border-radius: 5px;
+    }
+
+    .emergency-box strong {
+
+        color: #c62828;
+    }
+
+
+    /* ================= BUTTON ================= */
+
+    .submit-btn {
+
+        margin-top: 30px;
+
+        padding: 15px;
+
+        border: none;
+
+        border-radius: 8px;
+
+        background: #e53935;
+
+        color: white;
+
+        font-size: 17px;
+
+        font-weight: bold;
+
+        cursor: pointer;
+    }
+
+    .submit-btn:hover {
+
+        background: #c62828;
+    }
+
+
+    /* ================= SUCCESS ================= */
+
+    .success-message {
+
+        display: none;
+
+        max-width: 750px;
+
+        margin: 30px auto 0;
+
+        padding: 25px;
+
+        background: #e8f5e9;
+
+        border-left: 5px solid #4caf50;
+
+        border-radius: 8px;
+
+        color: #2e7d32;
+    }
+
+    .success-message h3 {
+
+        margin-bottom: 10px;
+    }
+
+
+    /* ================= FOOTER ================= */
+
+    footer {
+
+        background: #333;
+
+        color: white;
+
+        text-align: center;
+
+        padding: 35px 20px;
+
+        margin-top: 30px;
+    }
+
+    footer a {
+
+        color: white;
+
+        text-decoration: none;
+
+        margin: 0 8px;
+    }
+
+    footer a:hover {
+
+        color: #ff7043;
+    }
+
+
+    /* ================= MOBILE ================= */
+
+    @media(max-width: 700px) {
+
+        header {
+
+            flex-direction: column;
+
+            gap: 15px;
+        }
+
+        nav {
+
+            justify-content: center;
+
+            gap: 12px;
+        }
+
+        .hero h1 {
+
+            font-size: 35px;
+        }
+
+        .form-container {
+
+            padding: 25px 20px;
+        }
+
+    }
+
+</style>
+```
+
+</head>
+
+<body>
+
+<!-- ==================================================
+     HEADER
+================================================== -->
+
+<header>
+
+```
+<div class="logo">
+    🐾 Pet Rescue
+</div>
+
+<nav>
+
+    <a href="index.html">
+        Home
+    </a>
+
+    <a href="pets.html">
+        Pets
+    </a>
+
+    <a href="rescue.html">
+        Report Rescue
+    </a>
+
+    <a href="adoption.html">
+        Adopt
+    </a>
+
+    <a href="login.html">
+        Login
+    </a>
+
+</nav>
+```
+
+</header>
+
+<!-- ==================================================
+     HERO
+================================================== -->
+
+<section class="hero">
+
+```
+<div class="hero-content">
+
+    <h1>
+        🚑 Report a Pet Rescue
+    </h1>
+
+    <p>
+        Found an injured, abandoned or homeless pet?
+        Let us know and help them get the care they need.
+    </p>
+
+</div>
+```
+
+</section>
+
+<!-- ==================================================
+     INFORMATION
+================================================== -->
+
+<section class="section">
+
+```
+<div class="info-container">
+
+
+    <div class="info-card">
+
+        <div class="icon">
+            🚑
+        </div>
+
+        <h3>
+            Report
+        </h3>
+
+        <p>
+            Tell us about the animal and
+            where you found it.
+        </p>
+
+    </div>
+
+
+    <div class="info-card">
+
+        <div class="icon">
+            🏥
+        </div>
+
+        <h3>
+            Medical Care
+        </h3>
+
+        <p>
+            Our rescue team can help arrange
+            appropriate medical assistance.
+        </p>
+
+    </div>
+
+
+    <div class="info-card">
+
+        <div class="icon">
+            🏠
+        </div>
+
+        <h3>
+            Safe Shelter
+        </h3>
+
+        <p>
+            Rescued animals can be connected
+            with safe temporary shelter.
+        </p>
+
+    </div>
+
+
+    <div class="info-card">
+
+        <div class="icon">
+            ❤️
+        </div>
+
+        <h3>
+            Forever Home
+        </h3>
+
+        <p>
+            Once ready, pets can be listed
+            for adoption.
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- ==================================================
+     RESCUE FORM
+================================================== -->
+
+<div class="form-container">
+
+    <h2 class="form-title">
+        Rescue Report Form
+    </h2>
+
+    <p class="form-description">
+
+        Please provide as much accurate information
+        as possible. This will help the rescue team
+        understand the situation.
+
+    </p>
+
+
+    <form id="rescueForm">
+
+
+        <!-- REPORTER INFORMATION -->
+
+        <h3 style="color:#555;margin-top:10px;">
+            👤 Your Information
+        </h3>
+
+
+        <label>
+            Your Name
+            <span class="required">*</span>
+        </label>
+
+        <input
+            type="text"
+            id="reporterName"
+            placeholder="Enter your full name"
+            required
+        >
+
+
+        <label>
+            Phone Number
+            <span class="required">*</span>
+        </label>
+
+        <input
+            type="tel"
+            id="phone"
+            placeholder="Enter your phone number"
+            pattern="[0-9]{10}"
+            required
+        >
+
+
+        <label>
+            Email
+        </label>
+
+        <input
+            type="email"
+            id="email"
+            placeholder="Enter your email address"
+        >
+
+
+        <!-- PET INFORMATION -->
+
+        <h3 style="color:#555;margin-top:30px;">
+            🐾 Pet Information
+        </h3>
+
+
+        <label>
+            Type of Animal
+            <span class="required">*</span>
+        </label>
+
+        <select
+            id="petType"
+            required
+        >
+
+            <option value="">
+                Select animal type
+            </option>
+
+            <option value="dog">
+                🐶 Dog
+            </option>
+
+            <option value="cat">
+                🐱 Cat
+            </option>
+
+            <option value="bird">
+                🐦 Bird
+            </option>
+
+            <option value="other">
+                🐾 Other
+            </option>
+
+        </select>
+
+
+        <label>
+            Number of Animals
+        </label>
+
+        <input
+            type="number"
+            id="animalCount"
+            min="1"
+            value="1"
+        >
+
+
+        <label>
+            Animal Gender
+        </label>
+
+        <select id="gender">
+
+            <option value="">
+                Select gender
+            </option>
+
+            <option>
+                Male
+            </option>
+
+            <option>
+                Female
+            </option>
+
+            <option>
+                Unknown
+            </option>
+
+        </select>
+
+
+        <!-- LOCATION -->
+
+        <h3 style="color:#555;margin-top:30px;">
+            📍 Location Information
+        </h3>
+
+
+        <label>
+            Location
+            <span class="required">*</span>
+        </label>
+
+        <input
+            type="text"
+            id="location"
+            placeholder="Example: Near Bus Stand, Vijayawada"
+            required
+        >
+
+
+        <label>
+            City
+            <span class="required">*</span>
+        </label>
+
+        <input
+            type="text"
+            id="city"
+            placeholder="Enter city"
+            required
+        >
+
+
+        <label>
+            Landmark
+        </label>
+
+        <input
+            type="text"
+            id="landmark"
+            placeholder="Nearby landmark"
+        >
+
+
+        <!-- CONDITION -->
+
+        <h3 style="color:#555;margin-top:30px;">
+            🏥 Animal Condition
+        </h3>
+
+
+        <label>
+            Current Condition
+            <span class="required">*</span>
+        </label>
+
+        <select
+            id="condition"
+            required
+        >
+
+            <option value="">
+                Select condition
+            </option>
+
+            <option value="healthy">
+                Healthy
+            </option>
+
+            <option value="injured">
+                Injured
+            </option>
+
+            <option value="very-injured">
+                Seriously Injured
+            </option>
+
+            <option value="sick">
+                Sick
+            </option>
+
+            <option value="abandoned">
+                Abandoned
+            </option>
+
+            <option value="trapped">
+                Trapped
+            </option>
+
+            <option value="emergency">
+                Emergency
+            </option>
+
+        </select>
+
+
+        <label>
+            Does the animal need immediate help?
+        </label>
+
+        <div class="radio-container">
+
+            <div class="radio-item">
+
+                <input
+                    type="radio"
+                    name="emergency"
+                    value="yes"
+                    id="emergencyYes"
+                >
+
+                <label for="emergencyYes">
+                    Yes
+                </label>
+
+            </div>
+
+
+            <div class="radio-item">
+
+                <input
+                    type="radio"
+                    name="emergency"
+                    value="no"
+                    id="emergencyNo"
+                    checked
+                >
+
+                <label for="emergencyNo">
+                    No
+                </label>
+
+            </div>
+
+        </div>
+
+
+        <!-- DESCRIPTION -->
+
+        <label>
+            Describe the Situation
+            <span class="required">*</span>
+        </label>
+
+        <textarea
+            id="description"
+            rows="6"
+            placeholder="Explain what happened and describe the animal's condition..."
+            required
+        ></textarea>
+
+
+        <!-- IMAGE -->
+
+        <label>
+            Upload Pet Image
+        </label>
+
+        <input
+            type="file"
+            id="petImage"
+            accept="image/*"
+        >
+
+        <small style="color:#777;margin-top:7px;">
+            You can upload a clear photo of the animal.
+        </small>
+
+
+        <!-- DATE -->
+
+        <label>
+            Date Found
+            <span class="required">*</span>
+        </label>
+
+        <input
+            type="date"
+            id="dateFound"
+            required
+        >
+
+
+        <!-- EMERGENCY NOTICE -->
+
+        <div class="emergency-box">
+
+            <strong>
+                ⚠️ Emergency Notice
+            </strong>
+
+            <p style="margin-top:8px;line-height:1.5;">
+
+                If the animal is in immediate danger,
+                contact a local animal rescue organization
+                or veterinary service while submitting
+                this report.
+
+            </p>
+
+        </div>
+
+
+        <!-- SUBMIT -->
+
+        <button
+            type="submit"
+            class="submit-btn"
+        >
+            🚑 Submit Rescue Report
+        </button>
+
+    </form>
+
+</div>
+
+
+<!-- ==================================================
+     SUCCESS MESSAGE
+================================================== -->
+
+<div
+    class="success-message"
+    id="successMessage"
+>
+
+    <h3>
+        ✅ Rescue Report Submitted!
+    </h3>
+
+    <p>
+        Thank you for helping an animal in need.
+        Your report has been recorded.
+    </p>
+
+    <p style="margin-top:10px;">
+        Our rescue team can review the information
+        and take appropriate action.
+    </p>
+
+</div>
+```
+
+</section>
+
+<!-- ==================================================
+     FOOTER
+================================================== -->
+
+<footer>
+
+```
+<h3>
+    🐾 Pet Rescue & Adoption System
+</h3>
+
+<br>
+
+<p>
+    Helping rescued pets find care and loving homes.
+</p>
+
+<br>
+
+<div>
+
+    <a href="index.html">
+        Home
+    </a>
+
+    |
+
+    <a href="pets.html">
+        Pets
+    </a>
+
+    |
+
+    <a href="rescue.html">
+        Rescue
+    </a>
+
+    |
+
+    <a href="adoption.html">
+        Adoption
+    </a>
+
+</div>
+
+<br>
+
+<p>
+    © 2026 Pet Rescue Project
+</p>
+```
+
+</footer>
+
+<!-- ==================================================
+     JAVASCRIPT
+================================================== -->
+
+<script>
+
+    const rescueForm =
+        document.getElementById("rescueForm");
+
+    const successMessage =
+        document.getElementById("successMessage");
+
+
+    rescueForm.addEventListener(
+        "submit",
+        function(event) {
+
+            event.preventDefault();
+
+
+            /*
+                FRONTEND VERSION
+
+                At this stage the data is not
+                stored in a database.
+
+                Later we will send this data
+                to Node.js + Express + MongoDB.
+            */
+
+
+            successMessage.style.display =
+                "block";
+
+
+            successMessage.scrollIntoView({
+                behavior: "smooth"
+            });
+
+
+            rescueForm.reset();
+
+
+            /*
+                Set emergency "No" again
+                after resetting the form.
+            */
+
+            document.getElementById(
+                "emergencyNo"
+            ).checked = true;
+
+        }
+    );
+
+</script>
+
+</body>
+
+</html>

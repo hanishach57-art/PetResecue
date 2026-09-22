@@ -1,0 +1,1509 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Admin Dashboard | PawRescue</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f5f7fb;
+    color: #333;
+}
+
+
+/* HEADER */
+
+header {
+    height: 70px;
+    background: #111827;
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 5%;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.logo span {
+    color: #f97316;
+}
+
+nav {
+    display: flex;
+    gap: 20px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: #fb923c;
+}
+
+
+/* CONTAINER */
+
+.container {
+    width: 92%;
+    max-width: 1300px;
+    margin: 35px auto;
+}
+
+
+/* WELCOME */
+
+.welcome {
+    margin-bottom: 25px;
+}
+
+.welcome h1 {
+    margin-bottom: 7px;
+}
+
+.welcome p {
+    color: #6b7280;
+}
+
+
+/* STATS */
+
+.stats {
+
+    display: grid;
+
+    grid-template-columns:
+    repeat(4, 1fr);
+
+    gap: 18px;
+
+    margin-bottom: 30px;
+}
+
+
+.stat {
+
+    background: white;
+
+    padding: 22px;
+
+    border-radius: 12px;
+
+    box-shadow:
+    0 4px 15px
+    rgba(0,0,0,.06);
+
+}
+
+
+.stat-icon {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+
+.stat-number {
+
+    font-size: 28px;
+
+    font-weight: bold;
+
+    color: #f97316;
+
+}
+
+
+.stat-title {
+
+    margin-top: 5px;
+
+    color: #6b7280;
+
+}
+
+
+/* SECTION */
+
+.section {
+
+    background: white;
+
+    padding: 25px;
+
+    border-radius: 14px;
+
+    margin-bottom: 25px;
+
+    box-shadow:
+    0 4px 15px
+    rgba(0,0,0,.05);
+
+}
+
+
+.section h2 {
+
+    margin-bottom: 20px;
+
+}
+
+
+/* TABLE */
+
+.table-container {
+
+    overflow-x: auto;
+
+}
+
+
+table {
+
+    width: 100%;
+
+    border-collapse:
+    collapse;
+
+}
+
+
+th,
+td {
+
+    padding: 13px;
+
+    text-align: left;
+
+    border-bottom:
+    1px solid #eee;
+
+}
+
+
+th {
+
+    background:
+    #f9fafb;
+
+    color: #555;
+
+}
+
+
+tr:hover {
+
+    background:
+    #fafafa;
+
+}
+
+
+/* BADGES */
+
+.badge {
+
+    display:
+    inline-block;
+
+    padding:
+    5px 10px;
+
+    border-radius:
+    20px;
+
+    font-size:
+    12px;
+
+    font-weight:
+    bold;
+
+}
+
+
+.red {
+
+    background:
+    #fee2e2;
+
+    color:
+    #b91c1c;
+
+}
+
+
+.green {
+
+    background:
+    #dcfce7;
+
+    color:
+    #15803d;
+
+}
+
+
+.orange {
+
+    background:
+    #ffedd5;
+
+    color:
+    #c2410c;
+
+}
+
+
+.blue {
+
+    background:
+    #dbeafe;
+
+    color:
+    #1d4ed8;
+
+}
+
+
+/* BUTTONS */
+
+button {
+
+    border:
+    none;
+
+    padding:
+    8px 12px;
+
+    border-radius:
+    6px;
+
+    cursor:
+    pointer;
+
+    font-weight:
+    bold;
+
+}
+
+
+.view {
+
+    background:
+    #dbeafe;
+
+    color:
+    #1d4ed8;
+
+}
+
+
+.approve {
+
+    background:
+    #dcfce7;
+
+    color:
+    #15803d;
+
+}
+
+
+.reject {
+
+    background:
+    #fee2e2;
+
+    color:
+    #b91c1c;
+
+}
+
+
+/* CHART */
+
+.chart {
+
+    height:
+    260px;
+
+    display:
+    flex;
+
+    align-items:
+    flex-end;
+
+    justify-content:
+    space-around;
+
+    border-bottom:
+    2px solid #ddd;
+
+    padding:
+    20px;
+
+}
+
+
+.bar {
+
+    width:
+    45px;
+
+    background:
+    #f97316;
+
+    border-radius:
+    5px 5px 0 0;
+
+    position:
+    relative;
+
+}
+
+
+.bar span {
+
+    position:
+    absolute;
+
+    top:
+    -25px;
+
+    width:
+    100%;
+
+    text-align:
+    center;
+
+    font-size:
+    12px;
+
+    font-weight:
+    bold;
+
+}
+
+
+.bar-label {
+
+    text-align:
+    center;
+
+    margin-top:
+    8px;
+
+    font-size:
+    12px;
+
+}
+
+
+/* QUICK ACTIONS */
+
+.quick-actions {
+
+    display:
+    grid;
+
+    grid-template-columns:
+    repeat(4,1fr);
+
+    gap:
+    15px;
+
+}
+
+
+.quick {
+
+    padding:
+    20px;
+
+    border:
+    2px solid #eee;
+
+    border-radius:
+    10px;
+
+    text-align:
+    center;
+
+    cursor:
+    pointer;
+
+}
+
+
+.quick:hover {
+
+    border-color:
+    #f97316;
+
+    background:
+    #fff7ed;
+
+}
+
+
+.quick-icon {
+
+    font-size:
+    35px;
+
+    margin-bottom:
+    8px;
+
+}
+
+
+/* MOBILE */
+
+@media(max-width:900px) {
+
+    .stats {
+
+        grid-template-columns:
+        1fr 1fr;
+
+    }
+
+    .quick-actions {
+
+        grid-template-columns:
+        1fr 1fr;
+
+    }
+
+}
+
+
+@media(max-width:600px) {
+
+    header {
+
+        padding:
+        0 20px;
+
+    }
+
+    nav {
+
+        display:
+        none;
+
+    }
+
+    .stats {
+
+        grid-template-columns:
+        1fr;
+
+    }
+
+    .quick-actions {
+
+        grid-template-columns:
+        1fr;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
+
+🐾 Paw<span>Rescue</span>
+
+</div>
+
+<nav>
+
+<a href="index.html">
+Home
+</a>
+
+<a href="dashboard.html">
+User
+</a>
+
+<a href="volunteer-dashboard.html">
+Volunteer
+</a>
+
+<a href="login.html"
+onclick="logout()">
+Logout </a>
+
+</nav>
+
+</header>
+
+<div class="container">
+
+<!-- WELCOME -->
+
+<div class="welcome">
+
+<h1>
+👨‍💼 Admin Dashboard
+</h1>
+
+<p>
+Manage your complete Pet Rescue platform.
+</p>
+
+</div>
+
+<!-- STATISTICS -->
+
+<div class="stats">
+
+<div class="stat">
+
+<div class="stat-icon">
+👥
+</div>
+
+<div
+id="userCount"
+class="stat-number">
+0
+</div>
+
+<div class="stat-title">
+Registered Users
+</div>
+
+</div>
+
+<div class="stat">
+
+<div class="stat-icon">
+🐾
+</div>
+
+<div
+id="petCount"
+class="stat-number">
+0
+</div>
+
+<div class="stat-title">
+Registered Pets
+</div>
+
+</div>
+
+<div class="stat">
+
+<div class="stat-icon">
+🚨
+</div>
+
+<div
+id="sosCount"
+class="stat-number">
+0
+</div>
+
+<div class="stat-title">
+SOS Requests
+</div>
+
+</div>
+
+<div class="stat">
+
+<div class="stat-icon">
+🚑
+</div>
+
+<div
+id="activeCount"
+class="stat-number">
+0
+</div>
+
+<div class="stat-title">
+Active Rescues
+</div>
+
+</div>
+
+<div class="stat">
+
+<div class="stat-icon">
+❤️
+</div>
+
+<div
+id="adoptionCount"
+class="stat-number">
+0
+</div>
+
+<div class="stat-title">
+Adoption Requests
+</div>
+
+</div>
+
+<div class="stat">
+
+<div class="stat-icon">
+👤
+</div>
+
+<div
+id="volunteerCount"
+class="stat-number">
+0
+</div>
+
+<div class="stat-title">
+Volunteers
+</div>
+
+</div>
+
+<div class="stat">
+
+<div class="stat-icon">
+🏠
+</div>
+
+<div
+id="shelterCount"
+class="stat-number">
+0
+</div>
+
+<div class="stat-title">
+Shelters</div>
+
+</div>
+
+<div class="stat">
+
+<div class="stat-icon">
+💰
+</div>
+
+<div
+id="donationCount"
+class="stat-number">
+₹0
+</div>
+
+<div class="stat-title">
+Donations
+</div>
+
+</div>
+
+</div>
+
+<!-- QUICK ACTIONS -->
+
+<div class="section">
+
+<h2>
+⚡ Quick Management
+</h2>
+
+<div class="quick-actions">
+
+<div
+class="quick"
+onclick="location.href='pet.html'">
+
+<div class="quick-icon">
+🐾
+</div>
+
+<strong>
+Manage Pets
+</strong>
+
+</div>
+
+<div
+class="quick"
+onclick="location.href='volunteer-dashboard.html'">
+
+<div class="quick-icon">
+👤
+</div>
+
+<strong>
+Manage Volunteers
+</strong>
+
+</div>
+
+<div
+class="quick"
+onclick="location.href='emergency-sos.html'">
+
+<div class="quick-icon">
+🚨
+</div>
+
+<strong>
+Emergency SOS
+</strong>
+
+</div>
+
+<div
+class="quick"
+onclick="location.href='adoption.html'">
+
+<div class="quick-icon">
+❤️
+</div>
+
+<strong>
+Adoptions
+</strong>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- SOS CASES -->
+
+<div class="section">
+
+<h2>
+🚨 Emergency SOS Cases
+</h2>
+
+<div class="table-container">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>
+Case ID
+</th>
+
+<th>
+Emergency
+</th>
+
+<th>
+Animal
+</th>
+
+<th>
+Reporter
+</th>
+
+<th>
+Status
+</th>
+
+<th>
+Action
+</th>
+
+</tr>
+
+</thead>
+
+<tbody id="sosTable">
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+<!-- VOLUNTEERS -->
+
+<div class="section">
+
+<h2>
+👤 Volunteer Management
+</h2>
+
+<div class="table-container">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>
+Volunteer
+</th>
+
+<th>
+Phone
+</th>
+
+<th>
+Status
+</th>
+
+<th>
+Cases
+</th>
+
+</tr>
+
+</thead>
+
+<tbody id="volunteerTable">
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+<!-- CHART -->
+
+<div class="section">
+
+<h2>
+📊 Rescue Statistics
+</h2>
+
+<div
+id="chart"
+class="chart">
+
+</div>
+
+<div
+id="chartLabels"
+style="
+display:flex;
+justify-content:space-around;
+">
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+
+/*
+    LOAD DATA
+*/
+
+
+const users =
+    JSON.parse(
+        localStorage.getItem(
+            "users"
+        )
+    ) || [];
+
+
+const pets =
+    JSON.parse(
+        localStorage.getItem(
+            "pets"
+        )
+    ) || [];
+
+
+const sosCases =
+    JSON.parse(
+        localStorage.getItem(
+            "sosCases"
+        )
+    ) || [];
+
+
+const rescueCases =
+    JSON.parse(
+        localStorage.getItem(
+            "rescueCases"
+        )
+    ) || [];
+
+
+const volunteers =
+    JSON.parse(
+        localStorage.getItem(
+            "volunteers"
+        )
+    ) || [];
+
+
+const adoptions =
+    JSON.parse(
+        localStorage.getItem(
+            "adoptionRequests"
+        )
+    ) || [];
+
+
+const shelters =
+    JSON.parse(
+        localStorage.getItem(
+            "shelters"
+        )
+    ) || [];
+
+
+const donations =
+    JSON.parse(
+        localStorage.getItem(
+            "donations"
+        )
+    ) || [];
+
+
+/*
+    STATISTICS
+*/
+
+
+document.getElementById(
+    "userCount"
+).textContent =
+    users.length;
+
+
+document.getElementById(
+    "petCount"
+).textContent =
+    pets.length;
+
+
+document.getElementById(
+    "sosCount"
+).textContent =
+    sosCases.length;
+
+
+const activeRescues =
+    [
+        ...sosCases,
+        ...rescueCases
+    ]
+    .filter(
+        item =>
+            item.status !==
+            "Completed" &&
+            item.status !==
+            "Rescued"
+    );
+
+
+document.getElementById(
+    "activeCount"
+).textContent =
+    activeRescues.length;
+
+
+document.getElementById(
+    "adoptionCount"
+).textContent =
+    adoptions.length;
+
+
+document.getElementById(
+    "volunteerCount"
+).textContent =
+    volunteers.length;
+
+
+document.getElementById(
+    "shelterCount"
+).textContent =
+    shelters.length;
+
+
+/*
+    DONATIONS
+*/
+
+
+let totalDonation = 0;
+
+
+donations.forEach(
+    function(donation) {
+
+        totalDonation +=
+            Number(
+                donation.amount
+            ) || 0;
+
+    }
+);
+
+
+document.getElementById(
+    "donationCount"
+).textContent =
+    "₹" +
+    totalDonation;
+
+
+/*
+    SOS TABLE
+*/
+
+
+const sosTable =
+    document.getElementById(
+        "sosTable"
+    );
+
+
+if (
+    sosCases.length === 0
+) {
+
+    sosTable.innerHTML = `
+
+        <tr>
+
+        <td colspan="6"
+        style="text-align:center">
+
+        No SOS cases available.
+
+        </td>
+
+        </tr>
+
+    `;
+
+}
+
+
+sosCases.forEach(
+    function(item) {
+
+
+        const row =
+            document.createElement(
+                "tr"
+            );
+
+
+        let badgeClass =
+            "orange";
+
+
+        if (
+            item.status ===
+            "Completed"
+        ) {
+
+            badgeClass =
+                "green";
+
+        }
+
+
+        row.innerHTML = `
+
+            <td>
+                ${item.id || "-"}
+            </td>
+
+            <td>
+                ${
+                    item.emergencyType ||
+                    "Emergency"
+                }
+            </td>
+
+            <td>
+                ${
+                    item.animalType ||
+                    "-"
+                }
+            </td>
+
+            <td>
+                ${
+                    item.reporterName ||
+                    "-"
+                }
+            </td>
+
+            <td>
+
+                <span
+                class="badge ${badgeClass}">
+
+                    ${
+                        item.status ||
+                        "Pending"
+                    }
+
+                </span>
+
+            </td>
+
+            <td>
+
+                <button
+                class="view"
+                onclick="viewSOS('${item.id}')">
+
+                View
+
+                </button>
+
+            </td>
+
+        `;
+
+
+        sosTable.appendChild(
+            row
+        );
+
+    }
+);
+
+
+/*
+    VIEW SOS
+*/
+
+
+function viewSOS(
+    id
+) {
+
+
+    const item =
+        sosCases.find(
+            caseItem =>
+                caseItem.id === id
+        );
+
+
+    if (!item) {
+
+        return;
+
+    }
+
+
+    alert(
+
+        "Case: " +
+        item.id +
+
+        "\nEmergency: " +
+        item.emergencyType +
+
+        "\nAnimal: " +
+        item.animalType +
+
+        "\nReporter: " +
+        item.reporterName +
+
+        "\nPhone: " +
+        item.reporterPhone +
+
+        "\nStatus: " +
+        item.status
+
+    );
+
+}
+
+
+/*
+    VOLUNTEER TABLE
+*/
+
+
+const volunteerTable =
+    document.getElementById(
+        "volunteerTable"
+    );
+
+
+if (
+    volunteers.length === 0
+) {
+
+    volunteerTable.innerHTML = `
+
+        <tr>
+
+        <td colspan="4"
+        style="text-align:center">
+
+        No volunteers registered yet.
+
+        </td>
+
+        </tr>
+
+    `;
+
+}
+
+
+volunteers.forEach(
+    function(volunteer) {
+
+
+        const completed =
+            [
+                ...sosCases,
+                ...rescueCases
+            ]
+            .filter(
+                item =>
+                    item.volunteerName ===
+                    volunteer.name &&
+                    item.status ===
+                    "Completed"
+            )
+            .length;
+
+
+        const row =
+            document.createElement(
+                "tr"
+            );
+
+
+        row.innerHTML = `
+
+            <td>
+                👤
+                ${volunteer.name || "-"}
+            </td>
+
+            <td>
+                ${volunteer.phone || "-"}
+            </td>
+
+            <td>
+
+                <span
+                class="badge green">
+
+                Active
+
+                </span>
+
+            </td>
+
+            <td>
+                ${completed}
+            </td>
+
+        `;
+
+
+        volunteerTable.appendChild(
+            row
+        );
+
+    }
+);
+
+
+/*
+    CHART
+*/
+
+
+function createChart() {
+
+
+    const chart =
+        document.getElementById(
+            "chart"
+        );
+
+
+    const labels =
+        document.getElementById(
+            "chartLabels"
+        );
+
+
+    const data = [
+
+        {
+            name: "SOS",
+            value: sosCases.length
+        },
+
+        {
+            name: "Rescue",
+            value:
+                rescueCases.length
+        },
+
+        {
+            name: "Adoption",
+            value:
+                adoptions.length
+        },
+
+        {
+            name: "Pets",
+            value:
+                pets.length
+        },
+
+        {
+            name: "Users",
+            value:
+                users.length
+        }
+
+    ];
+
+
+    const max =
+        Math.max(
+            ...data.map(
+                item =>
+                    item.value
+            ),
+            1
+        );
+
+
+    data.forEach(
+        function(item) {
+
+
+            const height =
+                (
+                    item.value /
+                    max
+                ) * 200;
+
+
+            const bar =
+                document.createElement(
+                    "div"
+                );
+
+
+            bar.className =
+                "bar";
+
+
+            bar.style.height =
+                height + "px";
+
+
+            bar.innerHTML = `
+
+                <span>
+                    ${item.value}
+                </span>
+
+            `;
+
+
+            chart.appendChild(
+                bar
+            );
+
+
+            const label =
+                document.createElement(
+                    "div"
+                );
+
+
+            label.className =
+                "bar-label";
+
+
+            label.style.width =
+                "45px";
+
+
+            label.textContent =
+                item.name;
+
+
+            labels.appendChild(
+                label
+            );
+
+        }
+    );
+
+}
+
+
+createChart();
+
+
+/*
+    LOGOUT
+*/
+
+
+function logout() {
+
+    localStorage.removeItem(
+        "isLoggedIn"
+    );
+
+}
+
+</script>
+
+</body>
+
+</html>

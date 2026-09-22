@@ -1,0 +1,1343 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+```
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Available Pets | Pet Rescue</title>
+
+<style>
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        background: #fff8f2;
+        color: #333;
+    }
+
+    /* ================= HEADER ================= */
+
+    header {
+        background: #ff7043;
+        color: white;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        padding: 18px 7%;
+
+        position: sticky;
+        top: 0;
+
+        z-index: 1000;
+    }
+
+    .logo {
+        font-size: 25px;
+        font-weight: bold;
+    }
+
+    nav {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    nav a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    nav a:hover {
+        color: #ffe0b2;
+    }
+
+
+    /* ================= TITLE ================= */
+
+    .page-title {
+        text-align: center;
+
+        padding: 70px 20px 40px;
+
+        background:
+            linear-gradient(
+                rgba(255,112,67,0.85),
+                rgba(255,112,67,0.85)
+            );
+
+        color: white;
+    }
+
+    .page-title h1 {
+        font-size: 45px;
+        margin-bottom: 15px;
+    }
+
+    .page-title p {
+        font-size: 18px;
+    }
+
+
+    /* ================= SEARCH ================= */
+
+    .search-area {
+        padding: 40px 7%;
+    }
+
+    .search-box {
+        max-width: 1000px;
+
+        margin: auto;
+
+        display: grid;
+
+        grid-template-columns:
+            2fr 1fr 1fr;
+
+        gap: 15px;
+    }
+
+    .search-box input,
+    .search-box select {
+
+        width: 100%;
+
+        padding: 14px;
+
+        border: 1px solid #ccc;
+
+        border-radius: 8px;
+
+        font-size: 16px;
+    }
+
+
+    /* ================= PET SECTION ================= */
+
+    .pets-section {
+        padding: 20px 7% 70px;
+    }
+
+    .pets-container {
+
+        display: grid;
+
+        grid-template-columns:
+            repeat(auto-fit, minmax(270px, 1fr));
+
+        gap: 30px;
+
+        max-width: 1200px;
+
+        margin: auto;
+    }
+
+
+    /* ================= PET CARD ================= */
+
+    .pet-card {
+
+        background: white;
+
+        border-radius: 15px;
+
+        overflow: hidden;
+
+        box-shadow:
+            0 5px 18px rgba(0,0,0,0.12);
+
+        transition: 0.3s;
+    }
+
+    .pet-card:hover {
+
+        transform: translateY(-8px);
+
+        box-shadow:
+            0 10px 25px rgba(0,0,0,0.18);
+    }
+
+    .pet-card img {
+
+        width: 100%;
+
+        height: 240px;
+
+        object-fit: cover;
+    }
+
+    .pet-info {
+
+        padding: 22px;
+    }
+
+    .pet-info h2 {
+
+        color: #e64a19;
+
+        margin-bottom: 12px;
+    }
+
+    .pet-info p {
+
+        margin: 8px 0;
+
+        color: #555;
+    }
+
+    .status {
+
+        display: inline-block;
+
+        margin-top: 10px;
+
+        padding: 7px 12px;
+
+        border-radius: 20px;
+
+        background: #e8f5e9;
+
+        color: #2e7d32;
+
+        font-weight: bold;
+
+        font-size: 14px;
+    }
+
+
+    /* ================= BUTTON ================= */
+
+    .btn {
+
+        display: inline-block;
+
+        background: #ff5722;
+
+        color: white;
+
+        border: none;
+
+        padding: 12px 18px;
+
+        border-radius: 7px;
+
+        font-weight: bold;
+
+        text-decoration: none;
+
+        margin-top: 15px;
+
+        cursor: pointer;
+    }
+
+    .btn:hover {
+
+        background: #e64a19;
+    }
+
+    .adopt-btn {
+
+        background: #4caf50;
+
+        margin-left: 5px;
+    }
+
+    .adopt-btn:hover {
+
+        background: #388e3c;
+    }
+
+
+    /* ================= DETAILS ================= */
+
+    .details-section {
+
+        display: none;
+
+        padding: 50px 7%;
+
+        background: #fff0e6;
+    }
+
+    .details-box {
+
+        max-width: 650px;
+
+        margin: auto;
+
+        background: white;
+
+        padding: 30px;
+
+        border-radius: 15px;
+
+        box-shadow:
+            0 5px 20px rgba(0,0,0,0.1);
+    }
+
+    .details-box h2 {
+
+        color: #e64a19;
+
+        margin-bottom: 20px;
+    }
+
+    .details-box p {
+
+        margin: 10px 0;
+
+        font-size: 17px;
+    }
+
+
+    /* ================= NO RESULTS ================= */
+
+    #noResults {
+
+        display: none;
+
+        text-align: center;
+
+        padding: 50px;
+
+        color: #777;
+
+        font-size: 20px;
+    }
+
+
+    /* ================= FOOTER ================= */
+
+    footer {
+
+        background: #333;
+
+        color: white;
+
+        text-align: center;
+
+        padding: 30px 20px;
+    }
+
+    footer a {
+
+        color: white;
+
+        text-decoration: none;
+
+        margin: 0 8px;
+    }
+
+    footer a:hover {
+
+        color: #ff7043;
+    }
+
+
+    /* ================= MOBILE ================= */
+
+    @media(max-width: 700px) {
+
+        header {
+
+            flex-direction: column;
+
+            gap: 15px;
+        }
+
+        nav {
+
+            justify-content: center;
+        }
+
+        .page-title h1 {
+
+            font-size: 35px;
+        }
+
+        .search-box {
+
+            grid-template-columns: 1fr;
+        }
+
+    }
+
+</style>
+```
+
+</head>
+
+<body>
+
+<!-- ==================================================
+     HEADER
+================================================== -->
+
+<header>
+
+```
+<div class="logo">
+    🐾 Pet Rescue
+</div>
+
+<nav>
+
+    <a href="index.html">
+        Home
+    </a>
+
+    <a href="pets.html">
+        Pets
+    </a>
+
+    <a href="rescue.html">
+        Report Rescue
+    </a>
+
+    <a href="adoption.html">
+        Adopt
+    </a>
+
+    <a href="login.html">
+        Login
+    </a>
+
+</nav>
+```
+
+</header>
+
+<!-- ==================================================
+     PAGE TITLE
+================================================== -->
+
+<section class="page-title">
+
+```
+<h1>
+    Find Your New Best Friend 🐶🐱
+</h1>
+
+<p>
+    Give a rescued pet a loving forever home.
+</p>
+```
+
+</section>
+
+<!-- ==================================================
+     SEARCH AND FILTER
+================================================== -->
+
+<section class="search-area">
+
+```
+<div class="search-box">
+
+    <input
+        type="text"
+        id="searchInput"
+        placeholder="🔍 Search by name or breed..."
+    >
+
+
+    <select id="speciesFilter">
+
+        <option value="all">
+            All Animals
+        </option>
+
+        <option value="dog">
+            Dogs
+        </option>
+
+        <option value="cat">
+            Cats
+        </option>
+
+    </select>
+
+
+    <select id="genderFilter">
+
+        <option value="all">
+            All Genders
+        </option>
+
+        <option value="male">
+            Male
+        </option>
+
+        <option value="female">
+            Female
+        </option>
+
+    </select>
+
+</div>
+```
+
+</section>
+
+<!-- ==================================================
+     PETS
+================================================== -->
+
+<section class="pets-section">
+
+```
+<div class="pets-container" id="petsContainer">
+
+
+    <!-- ================= BUDDY ================= -->
+
+    <div
+        class="pet-card"
+
+        data-name="buddy"
+
+        data-breed="labrador"
+
+        data-species="dog"
+
+        data-gender="male"
+    >
+
+        <img
+            src="https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=600&q=80"
+
+            alt="Buddy Labrador Dog"
+        >
+
+        <div class="pet-info">
+
+            <h2>
+                Buddy 🐶
+            </h2>
+
+            <p>
+                <strong>Breed:</strong>
+                Labrador
+            </p>
+
+            <p>
+                <strong>Age:</strong>
+                2 Years
+            </p>
+
+            <p>
+                <strong>Gender:</strong>
+                Male
+            </p>
+
+            <p>
+                <strong>Location:</strong>
+                Vijayawada
+            </p>
+
+            <p>
+                <strong>Health:</strong>
+                Healthy
+            </p>
+
+            <p>
+                <strong>Vaccinated:</strong>
+                Yes
+            </p>
+
+            <span class="status">
+                Available
+            </span>
+
+            <br>
+
+            <button
+                class="btn"
+                onclick="showDetails(
+                    'Buddy',
+                    'Labrador',
+                    '2 Years',
+                    'Male',
+                    'Vijayawada',
+                    'Healthy',
+                    'Vaccinated',
+                    'Buddy is a friendly and playful dog who loves people.'
+                )"
+            >
+                View Details
+            </button>
+
+         <a href="adoption.html?pet=Buddy" class="btn adopt-btn">
+    ❤️ Adopt
+</a>   
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= LUNA ================= -->
+
+    <div
+        class="pet-card"
+
+        data-name="luna"
+
+        data-breed="persian"
+
+        data-species="cat"
+
+        data-gender="female"
+    >
+
+        <img
+            src="https://images.unsplash.com/photo-1573865526739-10659fec78a5?auto=format&fit=crop&w=600&q=80"
+
+            alt="Luna Persian Cat"
+        >
+
+        <div class="pet-info">
+
+            <h2>
+                Luna 🐱
+            </h2>
+
+            <p>
+                <strong>Breed:</strong>
+                Persian
+            </p>
+
+            <p>
+                <strong>Age:</strong>
+                1 Year
+            </p>
+
+            <p>
+                <strong>Gender:</strong>
+                Female
+            </p>
+
+            <p>
+                <strong>Location:</strong>
+                Guntur
+            </p>
+
+            <p>
+                <strong>Health:</strong>
+                Healthy
+            </p>
+
+            <p>
+                <strong>Vaccinated:</strong>
+                Yes
+            </p>
+
+            <span class="status">
+                Available
+            </span>
+
+            <br>
+
+            <button
+                class="btn"
+                onclick="showDetails(
+                    'Luna',
+                    'Persian',
+                    '1 Year',
+                    'Female',
+                    'Guntur',
+                    'Healthy',
+                    'Vaccinated',
+                    'Luna is a calm and loving cat who enjoys attention.'
+                )"
+            >
+                View Details
+            </button>
+
+            <a
+                href="adoption.html"
+                class="btn adopt-btn"
+            >
+                Adopt
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= ROCKY ================= -->
+
+    <div
+        class="pet-card"
+
+        data-name="rocky"
+
+        data-breed="golden retriever"
+
+        data-species="dog"
+
+        data-gender="male"
+    >
+
+        <img
+            src="https://images.unsplash.com/photo-1558788353-f76d92427f16?auto=format&fit=crop&w=600&q=80"
+
+            alt="Rocky Golden Retriever"
+        >
+
+        <div class="pet-info">
+
+            <h2>
+                Rocky 🐕
+            </h2>
+
+            <p>
+                <strong>Breed:</strong>
+                Golden Retriever
+            </p>
+
+            <p>
+                <strong>Age:</strong>
+                3 Years
+            </p>
+
+            <p>
+                <strong>Gender:</strong>
+                Male
+            </p>
+
+            <p>
+                <strong>Location:</strong>
+                Hyderabad
+            </p>
+
+            <p>
+                <strong>Health:</strong>
+                Healthy
+            </p>
+
+            <p>
+                <strong>Vaccinated:</strong>
+                Yes
+            </p>
+
+            <span class="status">
+                Available
+            </span>
+
+            <br>
+
+            <button
+                class="btn"
+                onclick="showDetails(
+                    'Rocky',
+                    'Golden Retriever',
+                    '3 Years',
+                    'Male',
+                    'Hyderabad',
+                    'Healthy',
+                    'Vaccinated',
+                    'Rocky is an energetic dog who loves playing outdoors.'
+                )"
+            >
+                View Details
+            </button>
+
+            <a href="adoption.html?pet=Luna" class="btn adopt-btn">
+    ❤️ Adopt
+</a>
+        </div>
+
+    </div>
+
+
+    <!-- ================= MAX ================= -->
+
+    <div
+        class="pet-card"
+
+        data-name="max"
+
+        data-breed="beagle"
+
+        data-species="dog"
+
+        data-gender="male"
+    >
+
+        <img
+            src="https://images.unsplash.com/photo-1505628346881-b72b27e84530?auto=format&fit=crop&w=600&q=80"
+
+            alt="Max Beagle"
+        >
+
+        <div class="pet-info">
+
+            <h2>
+                Max 🐶
+            </h2>
+
+            <p>
+                <strong>Breed:</strong>
+                Beagle
+            </p>
+
+            <p>
+                <strong>Age:</strong>
+                1.5 Years
+            </p>
+
+            <p>
+                <strong>Gender:</strong>
+                Male
+            </p>
+
+            <p>
+                <strong>Location:</strong>
+                Amaravati
+            </p>
+
+            <p>
+                <strong>Health:</strong>
+                Healthy
+            </p>
+
+            <p>
+                <strong>Vaccinated:</strong>
+                Yes
+            </p>
+
+            <span class="status">
+                Available
+            </span>
+
+            <br>
+
+            <button
+                class="btn"
+                onclick="showDetails(
+                    'Max',
+                    'Beagle',
+                    '1.5 Years',
+                    'Male',
+                    'Amaravati',
+                    'Healthy',
+                    'Vaccinated',
+                    'Max is a cheerful and friendly Beagle.'
+                )"
+            >
+                View Details
+            </button>
+
+            <a href="adoption.html?pet=Rocky" class="btn adopt-btn">
+    ❤️ Adopt
+</a>
+        </div>
+
+    </div>
+
+
+    <!-- ================= MILO ================= -->
+
+    <div
+        class="pet-card"
+
+        data-name="milo"
+
+        data-breed="indian shorthair"
+
+        data-species="cat"
+
+        data-gender="male"
+    >
+
+        <img
+            src="https://images.unsplash.com/photo-1519052537078-e6302a4968d4?auto=format&fit=crop&w=600&q=80"
+
+            alt="Milo Cat"
+        >
+
+        <div class="pet-info">
+
+            <h2>
+                Milo 🐱
+            </h2>
+
+            <p>
+                <strong>Breed:</strong>
+                Indian Shorthair
+            </p>
+
+            <p>
+                <strong>Age:</strong>
+                8 Months
+            </p>
+
+            <p>
+                <strong>Gender:</strong>
+                Male
+            </p>
+
+            <p>
+                <strong>Location:</strong>
+                Vijayawada
+            </p>
+
+            <p>
+                <strong>Health:</strong>
+                Healthy
+            </p>
+
+            <p>
+                <strong>Vaccinated:</strong>
+                Yes
+            </p>
+
+            <span class="status">
+                Available
+            </span>
+
+            <br>
+
+            <button
+                class="btn"
+                onclick="showDetails(
+                    'Milo',
+                    'Indian Shorthair',
+                    '8 Months',
+                    'Male',
+                    'Vijayawada',
+                    'Healthy',
+                    'Vaccinated',
+                    'Milo is a gentle and playful kitten.'
+                )"
+            >
+                View Details
+            </button>
+<a href="adoption.html?pet=milo" class="btn adopt-btn">
+    ❤️ Adopt
+</a>
+        </div>
+
+    </div>
+
+
+    <!-- ================= BELLA ================= -->
+
+    <div
+        class="pet-card"
+
+        data-name="bella"
+
+        data-breed="indian dog"
+
+        data-species="dog"
+
+        data-gender="female"
+    >
+
+        <img
+            src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&w=600&q=80"
+
+            alt="Bella Dog"
+        >
+
+        <div class="pet-info">
+
+            <h2>
+                Bella 🐕
+            </h2>
+
+            <p>
+                <strong>Breed:</strong>
+                Indian Dog
+            </p>
+
+            <p>
+                <strong>Age:</strong>
+                2 Years
+            </p>
+
+            <p>
+                <strong>Gender:</strong>
+                Female
+            </p>
+
+            <p>
+                <strong>Location:</strong>
+                Guntur
+            </p>
+
+            <p>
+                <strong>Health:</strong>
+                Healthy
+            </p>
+
+            <p>
+                <strong>Vaccinated:</strong>
+                Yes
+            </p>
+
+            <span class="status">
+                Available
+            </span>
+
+            <br>
+
+            <button
+                class="btn"
+                onclick="showDetails(
+                    'Bella',
+                    'Indian Dog',
+                    '2 Years',
+                    'Female',
+                    'Guntur',
+                    'Healthy',
+                    'Vaccinated',
+                    'Bella is a loving and loyal dog looking for a family.'
+                )"
+            >
+                View Details
+            </button>
+
+            <a href="adoption.html?pet=bella" class="btn adopt-btn">
+    ❤️ Adopt
+</a>
+        </div>
+
+    </div>
+
+</div>
+
+
+<div id="noResults">
+
+    😿 No pets found.
+
+    <br>
+
+    Try changing your search or filters.
+
+</div>
+```
+
+</section>
+
+<!-- ==================================================
+     PET DETAILS
+================================================== -->
+
+<section
+    class="details-section"
+    id="detailsSection"
+>
+
+```
+<div class="details-box">
+
+    <h2 id="detailsName">
+        Pet Details
+    </h2>
+
+    <p>
+        <strong>Breed:</strong>
+        <span id="detailsBreed"></span>
+    </p>
+
+    <p>
+        <strong>Age:</strong>
+        <span id="detailsAge"></span>
+    </p>
+
+    <p>
+        <strong>Gender:</strong>
+        <span id="detailsGender"></span>
+    </p>
+
+    <p>
+        <strong>Location:</strong>
+        <span id="detailsLocation"></span>
+    </p>
+
+    <p>
+        <strong>Health:</strong>
+        <span id="detailsHealth"></span>
+    </p>
+
+    <p>
+        <strong>Vaccination:</strong>
+        <span id="detailsVaccination"></span>
+    </p>
+
+    <p>
+        <strong>About:</strong>
+        <span id="detailsDescription"></span>
+    </p>
+
+    <a
+        href="adoption.html"
+        class="btn adopt-btn"
+    >
+        ❤️ Apply for Adoption
+    </a>
+
+</div>
+```
+
+</section>
+
+<!-- ==================================================
+     FOOTER
+================================================== -->
+
+<footer>
+
+```
+<h3>
+    🐾 Pet Rescue & Adoption System
+</h3>
+
+<br>
+
+<p>
+    Helping rescued pets find loving forever homes.
+</p>
+
+<br>
+
+<div>
+
+    <a href="index.html">
+        Home
+    </a>
+
+    |
+
+    <a href="pets.html">
+        Pets
+    </a>
+
+    |
+
+    <a href="rescue.html">
+        Rescue
+    </a>
+
+    |
+
+    <a href="adoption.html">
+        Adoption
+    </a>
+
+</div>
+
+<br>
+
+<p>
+    © 2026 Pet Rescue Project
+</p>
+```
+
+</footer>
+
+<!-- ==================================================
+     JAVASCRIPT
+================================================== -->
+
+<script>
+
+
+    /* ==========================================
+       SEARCH AND FILTER
+    ========================================== */
+
+    const searchInput =
+        document.getElementById("searchInput");
+
+    const speciesFilter =
+        document.getElementById("speciesFilter");
+
+    const genderFilter =
+        document.getElementById("genderFilter");
+
+    const petCards =
+        document.querySelectorAll(".pet-card");
+
+    const noResults =
+        document.getElementById("noResults");
+
+
+    function filterPets() {
+
+        const searchText =
+            searchInput.value.toLowerCase();
+
+        const selectedSpecies =
+            speciesFilter.value;
+
+        const selectedGender =
+            genderFilter.value;
+
+        let visiblePets = 0;
+
+
+        petCards.forEach(function(card) {
+
+            const name =
+                card.dataset.name;
+
+            const breed =
+                card.dataset.breed;
+
+            const species =
+                card.dataset.species;
+
+            const gender =
+                card.dataset.gender;
+
+
+            const searchMatch =
+                name.includes(searchText) ||
+                breed.includes(searchText);
+
+
+            const speciesMatch =
+                selectedSpecies === "all" ||
+                species === selectedSpecies;
+
+
+            const genderMatch =
+                selectedGender === "all" ||
+                gender === selectedGender;
+
+
+            if (
+                searchMatch &&
+                speciesMatch &&
+                genderMatch
+            ) {
+
+                card.style.display = "block";
+
+                visiblePets++;
+
+            } else {
+
+                card.style.display = "none";
+
+            }
+
+        });
+
+
+        if (visiblePets === 0) {
+
+            noResults.style.display = "block";
+
+        } else {
+
+            noResults.style.display = "none";
+
+        }
+
+    }
+
+
+    searchInput.addEventListener(
+        "input",
+        filterPets
+    );
+
+    speciesFilter.addEventListener(
+        "change",
+        filterPets
+    );
+
+    genderFilter.addEventListener(
+        "change",
+        filterPets
+    );
+
+
+    /* ==========================================
+       PET DETAILS
+    ========================================== */
+
+    function showDetails(
+        name,
+        breed,
+        age,
+        gender,
+        location,
+        health,
+        vaccination,
+        description
+    ) {
+
+        document.getElementById(
+            "detailsName"
+        ).textContent = name;
+
+        document.getElementById(
+            "detailsBreed"
+        ).textContent = breed;
+
+        document.getElementById(
+            "detailsAge"
+        ).textContent = age;
+
+        document.getElementById(
+            "detailsGender"
+        ).textContent = gender;
+
+        document.getElementById(
+            "detailsLocation"
+        ).textContent = location;
+
+        document.getElementById(
+            "detailsHealth"
+        ).textContent = health;
+
+        document.getElementById(
+            "detailsVaccination"
+        ).textContent = vaccination;
+
+        document.getElementById(
+            "detailsDescription"
+        ).textContent = description;
+
+
+        const detailsSection =
+            document.getElementById(
+                "detailsSection"
+            );
+
+        detailsSection.style.display = "block";
+
+
+        detailsSection.scrollIntoView({
+            behavior: "smooth"
+        });
+
+    }
+
+</script>
+
+</body>
+
+</html>
